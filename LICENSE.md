@@ -19,6 +19,8 @@ Note: The main and indev branch licenses apply only to their respective branches
 3. Scope of License
 
    This License applies to all content found in this repository, with the following exceptions
+   
+   - External Content is excluded from this License.
 
    - Externally imported libraries located in the "_external_shared" folder are subject to their own respective licenses. Links to each library's source can be found in the "LIBRARIES.md" file.
 
