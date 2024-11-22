@@ -2,8 +2,6 @@ Elypso Hub Proprietary License
 
 Version 1.0
 
-Note: The main and indev branch licenses apply only to their respective branches and cannot be mixed. The indev license may change during development, while the main branch updates with major releases.
-
 1. Definitions
 
    - "Elypso Hub" or "Hub" refers to the program that is used to launch Elypso Engine.
