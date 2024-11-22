@@ -1,0 +1,4 @@
+# Elypso hub ignored files and folders
+build/
+.vs/
+out/

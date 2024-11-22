@@ -1,0 +1,49 @@
+
+----------------------------------------------------------------------
+IMPORTANT LINUX SETUP COMMANDS
+----------------------------------------------------------------------
+
+# install gcc, g++, make and other essential build tools
+sudo apt install build-essential -y
+
+# install gnu debugger
+sudo apt install gdb -y
+
+# install cmake
+sudo apt install cmake -y
+
+# install zenity
+sudo apt install zenity -y
+
+# install xdg-utils
+sudo apt install xdg-utils -y
+
+# install mesa drivers
+sudo apt install mesa-vulkan-drivers mesa-utils -y
+
+# install vulkan drivers
+sudo apt install vulkan-tools vulkan-validationlayers -y
+
+# install x11 drivers
+sudo apt install libx11-dev libxrandr-dev libxinerama-dev libxcursor-dev -y
+
+# install linux-compatible glfw3
+sudo apt install libglfw3-dev -y
+
+# install linux-compatible assimp
+sudo apt install libassimp-dev -y
+
+----------------------------------------------------------------------
+COMPILE AND RUN ELYPSO ENGINE OR OTHER PROGRAM
+----------------------------------------------------------------------
+
+# configure with cmake and compile with make
+username=$USER
+cd /home/$username/.vs/
+rm -rf build
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+cd build
+make -j
+
+# run Elypso engine in current folder
+"./Elypso Engine"
