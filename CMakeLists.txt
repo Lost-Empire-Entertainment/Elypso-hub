@@ -23,10 +23,6 @@ set(PROJECT_VERSION "${PROJECT_MAJOR_VERSION}.${PROJECT_MINOR_VERSION}.${PROJECT
 
 project("Elypso hub" VERSION ${PROJECT_VERSION})
 
-# Paths to frequently used directories
-get_filename_component(PARENT_DIR "${CMAKE_SOURCE_DIR}" DIRECTORY)
-set(PARENT_DIR_PATH "${PARENT_DIR}")
-
 if (WIN32)
 	set(RESOURCE_FILE "${CMAKE_SOURCE_DIR}/files/icon.rc")
 endif()
@@ -35,12 +31,12 @@ endif()
 set(INCLUDE_DIR "${CMAKE_SOURCE_DIR}/include")
 
 # External files
-set(EXT_GLFW_DIR "${CMAKE_SOURCE_DIR}/../_external_shared/GLFW")
-set(EXT_GLAD_DIR "${CMAKE_SOURCE_DIR}/../_external_shared/Glad")
-set(EXT_GLM_DIR "${CMAKE_SOURCE_DIR}/../_external_shared/GLM")
-set(EXT_IMGUI_DIR "${CMAKE_SOURCE_DIR}/../_external_shared/ImGui")
-set(EXT_MAGIC_ENUM_DIR "${CMAKE_SOURCE_DIR}/../_external_shared/magic_enum")
-set(EXT_STB_IMAGE_DIR "${CMAKE_SOURCE_DIR}/../_external_shared/Stb_image")
+set(EXT_GLFW_DIR "${CMAKE_SOURCE_DIR}/_external_shared/GLFW")
+set(EXT_GLAD_DIR "${CMAKE_SOURCE_DIR}/_external_shared/Glad")
+set(EXT_GLM_DIR "${CMAKE_SOURCE_DIR}/_external_shared/GLM")
+set(EXT_IMGUI_DIR "${CMAKE_SOURCE_DIR}/_external_shared/ImGui")
+set(EXT_MAGIC_ENUM_DIR "${CMAKE_SOURCE_DIR}/_external_shared/magic_enum")
+set(EXT_STB_IMAGE_DIR "${CMAKE_SOURCE_DIR}/_external_shared/Stb_image")
 
 # Add GLAD
 add_library(glad STATIC ${EXT_GLAD_DIR}/glad.c)
@@ -147,7 +143,7 @@ foreach(FILE ${COPY_TARGETS})
 	COMMAND ${CMAKE_COMMAND} -E remove
 	$<TARGET_FILE_DIR:Elypso_hub>/${FILE}
 	COMMAND ${CMAKE_COMMAND} -E copy
-	${PARENT_DIR_PATH}/${FILE}
+	${CMAKE_SOURCE_DIR}/${FILE}
 	$<TARGET_FILE_DIR:Elypso_hub>/${FILE}
   )
 endforeach()
