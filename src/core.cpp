@@ -7,6 +7,8 @@
 #include <Windows.h>
 #include <ShlObj.h>
 #include <TlHelp32.h>
+#elif __linux__
+#include <unistd.h>
 #endif
 #include <iostream>
 #include <algorithm>
@@ -45,9 +47,14 @@ namespace Core
 {
 	void Hub::Initialize()
 	{
-		if (IsThisProcessAlreadyRunning("Elypso hub.exe"))
+#if _WIN32
+		string name = "Elypso hub.exe";
+#elif __linux__
+		string name = "Elypso hub";
+#endif
+		if (IsThisProcessAlreadyRunning(name))
 		{
-			CreateErrorPopup("Elypso Hub is already running.");
+			CreateErrorPopup((name + " is already running!").c_str());
 		}
 
 		cout << "\n==================================================\n"
@@ -261,8 +268,14 @@ namespace Core
 		CloseHandle(hProcessSnap);
 		return processFound;
 #elif __linux__
-		string command = "pgrep -l \"" + processName + "\"";
-		return !system(command.c_str());
+		//get the process id
+		pid_t currentPID = getpid();
+
+		//construct the command to find processes by name, excluding the currend PID
+		string command = "pgrep -x \"" + processName + "\" | grep -v " + to_string(currentPID) + " > /dev/null";
+
+		//execute the command and return the result
+		return (system(command.c_str()) == 0);
 #endif
 	}
 
