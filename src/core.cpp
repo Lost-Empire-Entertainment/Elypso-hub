@@ -47,7 +47,7 @@ namespace Core
 {
 	void Hub::Initialize()
 	{
-#if _WIN32
+#ifdef _WIN32
 		string name = "Elypso hub.exe";
 #elif __linux__
 		string name = "Elypso hub";
