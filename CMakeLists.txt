@@ -1,9 +1,8 @@
 ﻿cmake_minimum_required (VERSION 3.22)
 
-# Enable Hot Reload for MSVC compilers if supported.
+# Set CMP0141 to NEW for improved linker handling on Windows if supported.
 if (WIN32 AND POLICY CMP0141)
   cmake_policy(SET CMP0141 NEW)
-  set(CMAKE_MSVC_DEBUG_INFORMATION_FORMAT "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>")
 endif()
 
 # Specify the compiler for Linux builds
@@ -23,8 +22,9 @@ set(PROJECT_VERSION "${PROJECT_MAJOR_VERSION}.${PROJECT_MINOR_VERSION}.${PROJECT
 
 project("Elypso hub" VERSION ${PROJECT_VERSION})
 
+# Specify resource file for Windows
 if (WIN32)
-	set(RESOURCE_FILE "${CMAKE_SOURCE_DIR}/files/icon.rc")
+    set(RESOURCE_FILE "${CMAKE_SOURCE_DIR}/files/icon.rc")
 endif()
 
 # Hub files
@@ -44,14 +44,14 @@ target_include_directories(glad PUBLIC ${EXT_GLAD_DIR}/..)
 
 # Add GLFW
 if (WIN32)
-set(GLFW_LIBRARY_PATH "${EXT_GLFW_DIR}/glfw3.lib")
+	set(GLFW_LIBRARY_PATH "${EXT_GLFW_DIR}/libglfw3.a")
 else()
-find_package(glfw3 REQUIRED)
+	find_package(glfw3 REQUIRED)
 endif()
 
 # Add x11 (linux only)
 if (UNIX)
-find_package(X11 REQUIRED)
+	find_package(X11 REQUIRED)
 endif()
 
 # Add magic_enum
@@ -80,10 +80,11 @@ list(APPEND SOURCE_FILES
 )
 
 # Build as hub executable
+add_executable(Elypso_hub ${SOURCE_FILES})
+
 if (WIN32)
-	add_executable(Elypso_hub ${SOURCE_FILES} ${RESOURCE_FILE})
-else()
-	add_executable(Elypso_hub ${SOURCE_FILES})
+	set_source_files_properties(${RESOURCE_FILE} PROPERTIES LANGUAGE RC)
+	target_sources(Elypso_hub PRIVATE ${RESOURCE_FILE})
 endif()
 
 # Forces the name to be Elypso hub
@@ -105,9 +106,9 @@ target_include_directories(Elypso_hub PRIVATE
 target_include_directories(Elypso_hub PRIVATE ${HUB_INCLUDE_DIRS})
 
 if (WIN32)
-target_link_libraries(Elypso_hub PRIVATE external_libs ${GLFW_LIBRARY_PATH})
+	target_link_libraries(Elypso_hub PRIVATE external_libs ${GLFW_LIBRARY_PATH} opengl32 gdi32 user32)
 else()
-target_link_libraries(Elypso_hub PRIVATE external_libs glfw ${X11_LIBRARIES})
+	target_link_libraries(Elypso_hub PRIVATE external_libs glfw ${X11_LIBRARIES})
 endif()
 
 # Define GLFW_INCLUDE_NONE
