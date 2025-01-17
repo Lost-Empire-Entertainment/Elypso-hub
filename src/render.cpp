@@ -37,8 +37,8 @@ namespace Graphics
 
 		cout << "Initializing window...\n";
 
-		if (currentWidth == 0) currentWidth = 1280;
-		if (currentHeight == 0) currentHeight = 720;
+		if (currentWidth == 0) currentWidth = 1024;
+		if (currentHeight == 0) currentHeight = 768;
 		window = glfwCreateWindow(
 			currentWidth,
 			currentHeight,
@@ -49,7 +49,7 @@ namespace Graphics
 		glfwMakeContextCurrent(window);
 		glfwSetFramebufferSizeCallback(window, UpdateAfterRescale);
 		glfwGetWindowSize(window, &windowedWidth, &windowedHeight);
-		glfwSetWindowSizeLimits(window, 600, 300, 7680, 4320);
+		glfwSetWindowSizeLimits(window, 800, 600, 7680, 4320);
 		glfwSwapInterval(1);
 
 		Hub::defaultPath = current_path().generic_string();
