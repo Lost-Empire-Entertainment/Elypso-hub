@@ -305,6 +305,29 @@ namespace Core
 #endif
 	}
 
+	void Hub::CreateWarningPopup(const char* warningMessage)
+	{
+		string title = "Elypso Hub Warning";
+
+		cout << "\n"
+			<< "===================="
+			<< "\n"
+			<< "HUB WARNING"
+			<< "\n\n"
+			<< warningMessage
+			<< "\n"
+			<< "===================="
+			<< "\n";
+
+#ifdef _WIN32
+		MessageBoxA(nullptr, warningMessage, title.c_str(), MB_ICONWARNING | MB_OK);
+#elif __linux__
+		string command = "zenity --warning --text=\"" + (string)warningMessage + "\" --title=\"" + title + "\"";
+		int result = system(command.c_str());
+		(void)result;
+#endif
+	}
+
 	//reset last idle activity timer
 	static double lastActivityTime = 0.0f;
 	void Hub::UpdateActivityTime()

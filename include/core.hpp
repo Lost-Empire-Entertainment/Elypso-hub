@@ -40,6 +40,7 @@ namespace Core
 
 		static bool IsThisProcessAlreadyRunning(const string& processName);
 		static void CreateErrorPopup(const char* errorMessage = "INSERT ERROR MESSAGE");
+		static void CreateWarningPopup(const char* warningMessage = "INSERT WARNING MESSAGE");
 
 		static void UpdateActivityTime();
 		static bool IsUserIdle();

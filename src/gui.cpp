@@ -265,7 +265,7 @@ namespace Graphics::GUI
 
 		if (Hub::projectsFolderPath == "")
 		{
-			cout << "Error: Projects folder has not been assigned so a new project cannot be created!\n";
+			Hub::CreateWarningPopup("Error: Projects folder has not been assigned so a new project cannot be created!");
 			return;
 		}
 
@@ -304,13 +304,13 @@ namespace Graphics::GUI
 		if (enginePath.stem().string() != "Elypso engine"
 			|| enginePath.extension().string() != ".exe")
 		{
-			cout << "Error: Path " << filePath << " does not lead to Elypso engine.exe!\n\n";
+			Hub::CreateWarningPopup(("Error: Path " + filePath + " does not lead to Elypso engine.exe!").c_str());
 			return;
 		}
 #elif __linux__
 		if (enginePath.stem().string() != "Elypso engine")
 		{
-			cout << "Error: Path " << filePath << " does not lead to Elypso engine!\n\n";
+			Hub::CreateWarningPopup(("Error: Path " + filePath + " does not lead to Elypso engine.exe!").c_str());
 			return;
 		}
 #endif
@@ -324,7 +324,7 @@ namespace Graphics::GUI
 	{
 		if (!exists(projectPath))
 		{
-			cout << "Error: Tried to remove '" << projectPath << "' but it has already been removed!\n\n";
+			Hub::CreateWarningPopup(("Error: Tried to remove '" + projectPath + "' but it has already been removed!").c_str());
 			UpdateFileList();
 			return;
 		}
@@ -342,13 +342,13 @@ namespace Graphics::GUI
 	{
 		if (Hub::enginePath == "")
 		{
-			cout << "Error: Couldn't run engine because no valid path could be loaded!\n\n";
+			Hub::CreateWarningPopup("Error: Couldn't run engine because no valid path could be loaded!");
 			return false;
 		}
 
 		if (!exists(Hub::enginePath))
 		{
-			cout << "Error: Tried to run '" << Hub::enginePath << "' but it doesn't exist!\n\n";
+			Hub::CreateWarningPopup(("Error: Tried to run '" + (Hub::enginePath).string() + "' but it doesn't exist!").c_str());
 			return false;
 		}
 
@@ -356,13 +356,14 @@ namespace Graphics::GUI
 		if (Hub::enginePath.stem().string() != "Elypso engine"
 			|| Hub::enginePath.extension().string() != ".exe")
 		{
-			cout << "Error: Path '" << Hub::enginePath << "' does not lead to Elypso engine.exe!\n\n";
+			cout << "\n\n";
+			Hub::CreateWarningPopup(("Error: Path '" + (Hub::enginePath).string() + "' does not lead to Elypso engine.exe!").c_str());
 			return false;
 		}
 #elif __linux__
 		if (Hub::enginePath.stem().string() != "Elypso engine")
 		{
-			cout << "Error: Path '" << Hub::enginePath << "' does not lead to Elypso engine.exe!\n\n";
+			Hub::CreateWarningPopup(("Error: Path '" + (Hub::enginePath).string() + "' does not lead to Elypso engine.exe!").c_str());
 			return false;
 		}
 #endif
