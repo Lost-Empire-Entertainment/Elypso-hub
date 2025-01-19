@@ -1,15 +1,18 @@
 @echo off
 
-:: This batch file builds GLFW from source code using Clang.
-:: Place this script in the root GLFW folder and run it to build the static library.
+:: This batch file builds GLFW from source code using MSVC (cl.exe).
+:: Place this script in the root GLFW folder and run it to build glfw3.lib.
 
 :: Set the root folder as the location of this script
 set "GLFW_ROOT=%~dp0"
-set "BUILD_DIR=%GLFW_ROOT%build"
-set "INSTALL_DIR=%GLFW_ROOT%glfw-install"
+set "BUILD_DIR=%GLFW_ROOT%msvc-build-debug"
+set "INSTALL_DIR=%GLFW_ROOT%msvc-install-debug"
 
-:: Paths to required tools
-set PATH=C:\BuildTools\mingw-bin\bin;C:\BuildTools\cmake-bin\bin;C:\BuildTools\ninja-bin;%PATH%
+:: Ensure Visual Studio environment is set up
+call "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat" || (
+    echo [ERROR] Failed to set up Visual Studio environment.
+    exit /b 1
+)
 
 :: Create the build directory
 if not exist "%BUILD_DIR%" mkdir "%BUILD_DIR%"
@@ -20,8 +23,9 @@ cd /d "%BUILD_DIR%" || (
 
 :: Configure GLFW with CMake
 cmake -G "Ninja" ^
-  -DCMAKE_C_COMPILER=clang ^
-  -DCMAKE_CXX_COMPILER=clang++ ^
+  -DCMAKE_BUILD_TYPE=Debug ^
+  -DCMAKE_C_COMPILER=cl ^
+  -DCMAKE_CXX_COMPILER=cl ^
   -DBUILD_SHARED_LIBS=OFF ^
   -DGLFW_BUILD_EXAMPLES=OFF ^
   -DGLFW_BUILD_TESTS=OFF ^
@@ -46,7 +50,7 @@ ninja install || (
 
 :: Success message
 echo [SUCCESS] GLFW built and installed successfully.
-echo Static library: %INSTALL_DIR%\lib\libglfw3.a
+echo Static library: %INSTALL_DIR%\lib\glfw3.lib
 echo Headers: %INSTALL_DIR%\include\GLFW
 
 pause
