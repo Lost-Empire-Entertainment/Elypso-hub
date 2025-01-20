@@ -159,44 +159,32 @@ add_custom_command(TARGET Elypso_hub POST_BUILD
     ${CMAKE_SOURCE_DIR}/files $<TARGET_FILE_DIR:Elypso_hub>/files
 )
 
-# Copy GLFW dll to the install directory after build
+# Copy GLFW DLL to the install directory after build
 if (WIN32)
     if (MSVC)
-		if(CMAKE_BUILD_TYPE STREQUAL "Release")
-			add_custom_command(TARGET Elypso_hub POST_BUILD
-				COMMAND ${CMAKE_COMMAND} -E remove
-				$<TARGET_FILE_DIR:Elypso_hub>/glfw3.dll
-				COMMAND ${CMAKE_COMMAND} -E copy
-				${CMAKE_SOURCE_DIR}/files/external\ dlls/msvc-release/glfw3.dll
-				$<TARGET_FILE_DIR:Elypso_hub>/glfw3.dll
-			)
-		elseif(CMAKE_BUILD_TYPE STREQUAL "Debug")
-			add_custom_command(TARGET Elypso_hub POST_BUILD
-				COMMAND ${CMAKE_COMMAND} -E remove
-				$<TARGET_FILE_DIR:Elypso_hub>/glfw3.dll
-				COMMAND ${CMAKE_COMMAND} -E copy
-				${CMAKE_SOURCE_DIR}/files/external\ dlls/msvc-debug/glfw3.dll
-				$<TARGET_FILE_DIR:Elypso_hub>/glfw3.dll
-			)
-		endif()
+        set(DLL_ORIGIN_BASE "${CMAKE_SOURCE_DIR}/files/external dlls")
+        if(CMAKE_BUILD_TYPE STREQUAL "Release")
+            set(DLL_ORIGIN "${DLL_ORIGIN_BASE}/msvc-release/glfw3.dll")
+        elseif(CMAKE_BUILD_TYPE STREQUAL "Debug")
+            set(DLL_ORIGIN "${DLL_ORIGIN_BASE}/msvc-debug/glfw3.dll")
+        endif()
     else()
-		if(CMAKE_BUILD_TYPE STREQUAL "Release")
-			add_custom_command(TARGET Elypso_hub POST_BUILD
-				COMMAND ${CMAKE_COMMAND} -E remove
-				$<TARGET_FILE_DIR:Elypso_hub>/glfw3.dll
-				COMMAND ${CMAKE_COMMAND} -E copy
-				${CMAKE_SOURCE_DIR}/files/external\ dlls/clang-release/glfw3.dll
-				$<TARGET_FILE_DIR:Elypso_hub>/glfw3.dll
-			)
-		elseif(CMAKE_BUILD_TYPE STREQUAL "Debug")
-			add_custom_command(TARGET Elypso_hub POST_BUILD
-				COMMAND ${CMAKE_COMMAND} -E remove
-				$<TARGET_FILE_DIR:Elypso_hub>/glfw3.dll
-				COMMAND ${CMAKE_COMMAND} -E copy
-				${CMAKE_SOURCE_DIR}/files/external\ dlls/clang-debug/glfw3.dll
-				$<TARGET_FILE_DIR:Elypso_hub>/glfw3.dll
-			)
-		endif()
+        set(DLL_ORIGIN_BASE "${CMAKE_SOURCE_DIR}/files/external dlls")
+        if(CMAKE_BUILD_TYPE STREQUAL "Release")
+            set(DLL_ORIGIN "${DLL_ORIGIN_BASE}/clang-release/glfw3.dll")
+        elseif(CMAKE_BUILD_TYPE STREQUAL "Debug")
+            set(DLL_ORIGIN "${DLL_ORIGIN_BASE}/clang-debug/glfw3.dll")
+        endif()
+    endif()
+
+    if(DLL_ORIGIN)
+        add_custom_command(TARGET Elypso_hub POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E remove 
+			"$<TARGET_FILE_DIR:Elypso_hub>/glfw3.dll"
+            COMMAND ${CMAKE_COMMAND} -E copy 
+			"${DLL_ORIGIN}" 
+			"$<TARGET_FILE_DIR:Elypso_hub>/glfw3.dll"
+        )
     endif()
 endif()
 
