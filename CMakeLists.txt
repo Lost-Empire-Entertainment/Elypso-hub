@@ -29,6 +29,11 @@ set(PROJECT_VERSION "${PROJECT_MAJOR_VERSION}.${PROJECT_MINOR_VERSION}.${PROJECT
 
 project("Elypso hub" VERSION ${PROJECT_VERSION})
 
+if (MSVC)
+    set(CMAKE_MSVC_RUNTIME_LIBRARY 
+        "$<IF:$<CONFIG:Debug>,MultiThreadedDebug,MultiThreaded>")
+endif()
+
 # Specify resource file for Windows
 if (WIN32)
     set(RESOURCE_FILE "${CMAKE_SOURCE_DIR}/files/icon.rc")
