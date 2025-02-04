@@ -478,21 +478,8 @@ namespace Graphics::GUI
 		}
 		else
 		{
-			//parent process: wait for the child to finish
-			int status;
-			if (waitpid(pid, &status, 0) == -1)
-			{
-				perror("Error during waitpid");
-			}
-			else if (WIFEXITED(status))
-			{
-				cout << "Child exited with status: " << WEXITSTATUS(status) << "\n";
-			}
-			else
-			{
-				cout << "Child did not exit normally\n";
-			}
-		}
+		   return;
+      }
 #endif
 	}
 
