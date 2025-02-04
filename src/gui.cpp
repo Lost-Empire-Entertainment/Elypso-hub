@@ -478,7 +478,8 @@ namespace Graphics::GUI
 		}
 		else
 		{
-		   return;
+         exit(EXIT_SUCCESS);
+         return;
       }
 #endif
 	}
