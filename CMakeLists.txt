@@ -65,11 +65,6 @@ else()
 	find_package(glfw3 REQUIRED)
 endif()
 
-# Add x11 (linux only)
-if (UNIX)
-	find_package(X11 REQUIRED)
-endif()
-
 # Add magic_enum
 add_library(magic_enum INTERFACE)
 target_include_directories(magic_enum INTERFACE ${EXT_MAGIC_ENUM_DIR})
