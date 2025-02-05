@@ -6,6 +6,10 @@
 
 The documentation for **Elypso hub** will be found at the [website](https://elypsoengine.com)  in the near future so please look there for information, this README file will not cover how to install or use this program.
 
+Please note - this is simply the repository for Elypso hub, it does not contain the engine or compiler source code.
+- Get the Elypso compiler from [here](https://github.com/Lost-Empire-Entertainment/Elypso-compiler)
+- Get the Elypso engine from [here](https://github.com/Lost-Empire-Entertainment/Elypso-engine)
+
 ---
 
 ### Prerequisites
