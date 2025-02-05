@@ -1,6 +1,6 @@
 # Elypso Hub Perpetual Free License  
 
-**Version 2.1**  
+**Version 2.0**  
 
 ---  
 
