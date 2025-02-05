@@ -122,9 +122,15 @@ target_include_directories(Elypso_hub PRIVATE
 target_include_directories(Elypso_hub PRIVATE ${HUB_INCLUDE_DIRS})
 
 if (WIN32)
-	target_link_libraries(Elypso_hub PRIVATE external_libs ${GLFW_LIBRARY_PATH} opengl32 gdi32 user32)
+	target_link_libraries(Elypso_hub PRIVATE external_libs ${GLFW_LIBRARY_PATH})
 else()
-	target_link_libraries(Elypso_hub PRIVATE external_libs glfw ${X11_LIBRARIES})
+	find_package(Wayland QUIET)
+	find_package(X11 QUIET)
+	if (Wayland_FOUND)
+		target_link_libraries(Elypso_hub PRIVATE external_libs glfw Wayland::Client)
+	elseif (X11_FOUND)
+		target_link_libraries(Elypso_hub PRIVATE external_libs glfw ${X11_LIBRARIES})
+	endif()
 endif()
 
 # Define GLFW_INCLUDE_NONE
