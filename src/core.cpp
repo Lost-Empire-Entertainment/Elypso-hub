@@ -47,6 +47,12 @@ namespace Core
 {
 	void Hub::Initialize()
 	{
+#ifdef NDEBUG
+		version = "Pre-release 1.1.0.0001";
+#else
+		version = "Pre-release 1.1.0.0001 [DEBUG]";
+#endif
+
 #ifdef _WIN32
 		string name = "Elypso hub.exe";
 #elif __linux__

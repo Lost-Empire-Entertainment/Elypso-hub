@@ -22,6 +22,7 @@ namespace Core
 	class Hub
 	{
 	public:
+		static inline string version;
 		static inline bool isHubRunning;
 
 		static inline path defaultPath;
