@@ -37,12 +37,18 @@ namespace Graphics
 
 		cout << "Initializing window...\n";
 
+#ifdef NDEBUG
+		string windowName = "Elypso hub 1.1.0";
+#else
+		string windowName = "Elypso hub 1.1.0 [DEBUG]";
+#endif
+
 		if (currentWidth == 0) currentWidth = 1024;
 		if (currentHeight == 0) currentHeight = 768;
 		window = glfwCreateWindow(
 			currentWidth,
 			currentHeight,
-			"Elypso hub 1.0.0",
+			windowName.c_str(),
 			NULL,
 			NULL);
 
