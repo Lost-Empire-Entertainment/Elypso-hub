@@ -1,0 +1,4 @@
+1.1.0.0001
+
+- fixed hub not correctly compiling to debug mode
+- added DEBUG window title tag to hub if it compiled in debug mode
