@@ -5,3 +5,5 @@ Changes:
 - removed all files and folders except:
 	- stb_image.cpp
 	- stb_image.h
+- copied stb_image.cpp to src
+- copied stb_image.h to include
