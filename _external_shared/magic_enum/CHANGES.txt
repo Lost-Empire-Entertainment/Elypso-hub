@@ -2,4 +2,4 @@ Original repository link:
 https://github.com/Neargye/magic_enum
 
 Changes:
-- copied magic_enum.hpp to new include folder
+- no changes have been made to this library
