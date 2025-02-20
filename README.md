@@ -1,10 +1,14 @@
 # Elypso hub
 
+[![License](https://img.shields.io/badge/license-Proprietary-blue)](LICENSE.md)
+![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux-brightgreen)
+![Development Stage](https://img.shields.io/badge/development-Release-brightgreen)
+
 **Elypso hub** is the project launcher used by Elypso engine. It uses several libraries listed in [the library file](LIBRARIES.md), it is built with C++ 20 and it runs natively on Windows and Linux (tested on Ubuntu-based distros and Arch).
 
 **Elypso hub** is considered to be in a stable state, most of the features are functional but a full 2.0 rewrite is coming in the near future.
 
-The documentation for **Elypso hub** will be found at the [website](https://elypsoengine.com)  in the near future so please look there for information, this README file will not cover how to install or use this program.
+The documentation for **Elypso hub** will be found at the [official website](https://elypsoengine.com)  in the near future so please look there for information, this README file will not cover how to install or use this program.
 
 Please note - this is simply the repository for Elypso hub, it does not contain the engine or compiler source code.
 - Get the Elypso compiler from [here](https://github.com/Lost-Empire-Entertainment/Elypso-compiler)
@@ -26,15 +30,15 @@ If this is your first time running the program then Windows may throw false posi
 
 ### Links
 
-[Support development on paypal](https://www.paypal.com/donate/?hosted_button_id=QWG8SAYX5TTP6)
+[Donate on PayPal](https://www.paypal.com/donate/?hosted_button_id=QWG8SAYX5TTP6)
 
-[Official discord server](https://discord.gg/FqJgy2SvDs)
+[Official Discord server](https://discord.gg/jkvasmTND5)
 
-[Official youtube channel](https://youtube.com/greenlaser)
+[Official Youtube channel](https://youtube.com/greenlaser)
 
-[Official twitch channel](https://www.twitch.tv/greenlaseer)
+[Official Twitch channel](https://www.twitch.tv/greenlaseer)
 
-[Official website (documentation coming soon)](https://elypsoengine.com)
+[Official website](https://elypsoengine.com)
 
 [Track development on the Trello board](https://trello.com/b/hbt6ebCZ/elypso-engine)
 
