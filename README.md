@@ -49,9 +49,3 @@ If this is your first time running the program then Windows may throw false posi
 * [Greenlaser](https://github.com/greeenlaser) - *Lead developer*
 
 * [tkpmonke](https://github.com/tkpmonke) - *Tester, Linux maintainer*
-
----
-
-### Licenses
-
-* [Elypso hub propietary license](LICENSE.md)
