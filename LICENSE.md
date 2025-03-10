@@ -1,81 +1,30 @@
-# Elypso Hub Perpetual Free License  
+# Elypso Hub Free License (v2.1)
 
-**Version 2.0**  
+## 1. Free Use
+- You may **use, modify, and distribute** Elypso Hub **for free, forever**.
+- You **own any projects, assets, or content** you create while using Elypso Hub.  
+  - This includes all code, assets, and modifications you make.
+  - The only exception is content created by **third-party libraries**, which remain subject to their respective licenses.  
+- The creator of Elypso Hub **does not claim any rights** to revenue from projects made with it. You **owe no royalties, fees, or payments** of any kind.
 
----  
+## 2. No Commercial Transfer
+- You **cannot sell, rent, or trade** Elypso Hub or its components for money or any other compensation.
+- You **are free to sell, distribute, or monetize** projects made with Elypso Hub. However, if your project includes third-party libraries, you **must comply with their respective licenses**.
 
-## 1. License Grant  
+## 3. Modification & Attribution (For Distributed Versions)
+- If you **modify Elypso Hub and distribute it** (in binary or source form), you **must document your changes**.
+- You **must credit the original creator** in any distributed modified versions.
+- Private modifications **do not require documentation or attribution** if they are not distributed.
 
-### 1.1 Free Use  
-- The Hub folder and its content (the **“Hub”**) are provided **free of charge**.  
-- Anyone, worldwide, may use them for **any project, forever**, under the conditions of this License.  
+## 4. Copyright & Notices
+- Do **not remove or alter** copyright or attribution notices in the Hub’s source files.
 
-### 1.2 Scope & Ownership  
-- This License applies **only** to files **owned or distributed** by **Lost Empire Entertainment** (the **“Licensor”**) within the Hub folder.  
-- **Compiled Output** of the Hub (the **“Compiled Output”**) remains covered by this License.  
-- **User-Created Files** (e.g., your own projects, assets) belong to you and are **not** governed by this License.  
+## 5. No Warranty & Limitation of Liability
+- Elypso Hub is provided **“as is”**, without any warranties, express or implied.
+- The creator makes **no guarantees** regarding functionality, performance, security, or suitability for any purpose.
+- You **assume all risks** associated with using Elypso Hub, including but not limited to data loss, software conflicts, or unintended behavior.
+- The creator of Elypso Hub **is not liable** for any damages, including financial loss, data corruption, or any other harm resulting from its use.
+- By using Elypso Hub, you acknowledge that **you are solely responsible** for ensuring it meets your needs and expectations.
 
----  
-
-## 2. Limitations on Commercial Transfer  
-- You may **not** sell, rent, lease, or otherwise trade the Hub or any part thereof for monetary value or other consideration.  
-
----  
-
-## 3. Retention of Notices  
-- You may **not** remove, modify, or obscure any copyright notices, tags, attributions, or proprietary notices within the Hub or its source files.  
-
----  
-
-## 4. Modification and Redistribution  
-
-### 4.1 Modification  
-- You **may** modify the Hub and its contents for personal or project-related use.  
-
-### 4.2 Redistribution  
-- You **may** distribute modified or unmodified versions of the Hub (including its Compiled Output), provided that:  
-  - All original notices remain intact.  
-  - You continue to comply with this License.  
-
----  
-
-## 5. Exclusions  
-- This License does **not** apply to any **third-party libraries**, including (but not limited to) those located in `_external_shared/`.  
-- It also does **not** apply to any **files created by or generated from** those third-party libraries, including any third-party output produced during compilation or runtime of the Hub.  
-
----  
-
-## 6. Disclaimer of Warranty & Assumption of Risk  
-
-### 6.1 Disclaimer of Warranty  
-- The Hub is provided **“AS IS”** without any warranties, express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, or non-infringement.  
-
-### 6.2 Assumption of Risk  
-- You acknowledge that using the Hub is **at your own risk**.  
-- The Licensor does not guarantee uninterrupted or error-free operation, nor is it responsible for any defects, vulnerabilities, or losses arising from use or misuse.  
-
----  
-
-## 7. Unlawful or Unauthorized Use  
-- The Licensor is **not liable** for any unlawful or unauthorized use of the Hub.  
-- You agree to comply with all **applicable laws** and to indemnify the Licensor against claims arising from such misuse.  
-
----  
-
-## 8. Termination  
-- This License **terminates automatically** if you breach any of its terms.  
-- Upon termination, you must **stop using** and **destroy all copies** of the Hub in your possession.  
-
----  
-
-## 9. Governing Law  
-- This License is governed by the laws of the **Licensor’s jurisdiction**, without regard to conflict of law provisions.  
-
----  
-
-## 10. License Updates and Effectiveness  
-- The Licensor may **update this License at any time**.  
-- Updates **only apply** if you choose to **download** or otherwise **acquire** a newer release or repository version.  
-- If you do **not** update, **this version** governs your use **indefinitely**.  
-
----
+## 6. Termination
+- Violating these terms **immediately revokes your rights** to use Elypso Hub.
