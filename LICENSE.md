@@ -2,9 +2,7 @@
 
 ## 1. Free Use
 - You may **use, modify, and distribute** Elypso Hub **for free, forever**.
-- You **own any projects, assets, or content** you create while using Elypso Hub.  
-  - This includes all code, assets, and modifications you make.
-  - The only exception is content created by **third-party libraries**, which remain subject to their respective licenses.  
+- You **own all projects** you create while using Elypso Hub.  
 - The creator of Elypso Hub **does not claim any rights** to revenue from projects made with it. You **owe no royalties, fees, or payments** of any kind.
 
 ## 2. No Commercial Transfer
