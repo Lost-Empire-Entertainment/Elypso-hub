@@ -47,10 +47,10 @@ namespace Core
 {
 	void Hub::Initialize()
 	{
-#ifdef NDEBUG
 		version = "Pre-release 1.1.0.0001";
+#ifdef NDEBUG
 #else
-		version = "Pre-release 1.1.0.0001 [DEBUG]";
+		version = version + " [DEBUG]";
 #endif
 
 #ifdef _WIN32
