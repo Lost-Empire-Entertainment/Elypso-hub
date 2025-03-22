@@ -56,7 +56,7 @@ target_include_directories(glad PUBLIC ${EXT_GLAD_DIR}/..)
 
 # Add GLFW
 if (WIN32)
-	if(CMAKE_BUILD_TYPE STREQUAL "Release")
+	if(CMAKE_BUILD_TYPE STREQUAL "Release" OR CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo")
 		set(GLFW_LIBRARY_PATH "${EXT_GLFW_DIR}/release/glfw3dll.lib")
 	elseif(CMAKE_BUILD_TYPE STREQUAL "Debug")
 		set(GLFW_LIBRARY_PATH "${EXT_GLFW_DIR}/debug/glfw3dll.lib")
@@ -156,7 +156,7 @@ add_custom_command(TARGET Elypso_hub POST_BUILD
 )
 
 # Copy all DLLs to the install directory after build
-if(CMAKE_BUILD_TYPE STREQUAL "Release")
+if(CMAKE_BUILD_TYPE STREQUAL "Release" OR CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo")
 	set(DLL_ORIGIN_DIR "${CMAKE_SOURCE_DIR}/files/external dlls/release")
 elseif(CMAKE_BUILD_TYPE STREQUAL "Debug")
 	set(DLL_ORIGIN_DIR "${CMAKE_SOURCE_DIR}/files/external dlls/debug")
