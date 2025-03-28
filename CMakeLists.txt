@@ -134,13 +134,13 @@ target_compile_definitions(Elypso_hub PRIVATE GLFW_INCLUDE_NONE)
 # Disable console on release
 if(CMAKE_BUILD_TYPE STREQUAL "Release" OR CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo")
 	# Set the subsystem to WINDOWS
-	set_target_properties(Elypso_engine PROPERTIES
+	set_target_properties(Elypso_hub PROPERTIES
 		WIN32_EXECUTABLE TRUE
 	)
 
 	# Set the entry point (MSVC-specific)
 	if (MSVC)
-		set_target_properties(Elypso_engine PROPERTIES
+		set_target_properties(Elypso_hub PROPERTIES
 		LINK_FLAGS "/ENTRY:mainCRTStartup"
 		)
 	endif()
