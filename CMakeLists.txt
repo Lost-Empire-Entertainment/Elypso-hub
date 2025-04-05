@@ -1,17 +1,5 @@
 ﻿cmake_minimum_required(VERSION 3.30.3)
 
-if (WIN32)
-	# Enable hot reload for MSVC
-	if (POLICY CMP0141)
-		cmake_policy(SET CMP0141 NEW)
-		set(CMAKE_MSVC_DEBUG_INFORMATION_FORMAT "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>")
-	endif()
-	# Explicitly set the MSVC toolset for Visual Studio
-	if (MSVC)
-		set(CMAKE_GENERATOR_TOOLSET "v143")
-	endif()
-endif()
-
 # Specify the compiler for Linux builds
 if (UNIX)
     set(CMAKE_C_COMPILER "/usr/bin/gcc")
@@ -30,8 +18,11 @@ set(PROJECT_VERSION "${PROJECT_MAJOR_VERSION}.${PROJECT_MINOR_VERSION}.${PROJECT
 project("Elypso hub" VERSION ${PROJECT_VERSION})
 
 if (MSVC)
-    set(CMAKE_MSVC_RUNTIME_LIBRARY 
-        "$<IF:$<CONFIG:Debug>,MultiThreadedDebug,MultiThreaded>")
+    if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+        set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreadedDebug")
+    else()
+        set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded")
+    endif()
 endif()
 
 # Specify resource file for Windows
