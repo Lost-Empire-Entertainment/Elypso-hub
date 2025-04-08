@@ -1,4 +1,4 @@
 # Elypso hub ignored files and folders
-build/
 .vs/
-out/
+build-release/
+build-debug/
