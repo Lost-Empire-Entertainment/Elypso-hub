@@ -388,11 +388,12 @@ namespace Graphics::GUI
 			Hub::enginePath.string());
 	}
 
-	void GUI_Hub::RunApplication(const string& parentFolderPath, const string& exePath, const string& commands)
+	void GUI_Hub::RunApplication(const string& parentPath, const string& exePath)
 	{
 #ifdef _WIN32
-		wstring wParentFolderPath(parentFolderPath.begin(), parentFolderPath.end());
+		wstring wParentFolderPath(parentPath.begin(), parentPath.end());
 		wstring wExePath(exePath.begin(), exePath.end());
+		string commands{};
 		wstring wCommands(commands.begin(), commands.end());
 
 		//initialize structures for process creation
@@ -436,34 +437,8 @@ namespace Graphics::GUI
 		CloseHandle(pi.hProcess);
 		CloseHandle(pi.hThread);
 #elif __linux__
-		//change working directory to parentFolderPath
-		if (chdir(parentFolderPath.c_str()) != 0)
-		{
-			perror("Error changing directory");
-			return;
-		}
-
-		//parse the commands into arguments
-		vector<string> args;
-		size_t pos = 0, found;
-		while ((found = commands.find(' ', pos)) != string::npos)
-		{
-			args.push_back(commands.substr(pos, found - pos));
-			pos = found + 1;
-		}
-		args.push_back(commands.substr(pos));
-
-		//prepare arguments for execvp
-		vector<char*> execArgs;
-		execArgs.push_back(const_cast<char*>(exePath.c_str()));
-		for (auto& arg : args)
-		{
-			execArgs.push_back(const_cast<char*>(arg.c_str()));
-		}
-		execArgs.push_back(nullptr);
-
 		pid_t pid = fork();
-		if (pid == -1)
+		if (pid < 0)
 		{
 			perror("Error during fork");
 			return;
@@ -471,16 +446,29 @@ namespace Graphics::GUI
 
 		if (pid == 0)
 		{
-			//child process: execute the program
-			execvp(execArgs[0], execArgs.data());
-			perror("Error during execvp");
-			exit(EXIT_FAILURE); //exit if execvp fails
+			//detach from parent session
+			if (setsid() < 0)
+			{
+				perror("Error creating new session");
+				exit(EXIT_FAILURE);
+			}
+
+			//change working dir to game exe folder
+			if (chdir(parentPath.c_str()) != 0)
+			{
+				perror("Error changing directory");
+				exit(EXIT_FAILURE);
+			}
+
+			//empty arguments
+			char* const argv[] = { const_cast<char*>(exePath.c_str()), nullptr };
+
+			//replace child with executable
+			execv(exePath.c_str(), argv);
+
+			perror("Error launching exe process");
+			exit(EXIT_FAILURE);
 		}
-		else
-		{
-			exit(EXIT_SUCCESS);
-         		return;
-      		}
 #endif
 	}
 

@@ -2,3 +2,7 @@
 
 - fixed compiler, engine, hub and game not correctly compiling to debug mode
 - added DEBUG window title tag to compiler, engine, hub and game if it compiled in debug mode
+
+1.1.0.0002:
+
+- fixed hub closing on linux as a fallback to hub freezing when opening any project

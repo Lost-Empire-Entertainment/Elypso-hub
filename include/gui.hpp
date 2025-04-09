@@ -49,7 +49,7 @@ namespace Graphics::GUI
 
 		static void RunProject(const string& targetProject);
 
-		static void RunApplication(const string& parentFolderPath, const string& exePath, const string& commands = "");
+		static void RunApplication(const string& parentFolderPath, const string& exePath);
 
 		static string SelectWithExplorer(enum SelectType);
 
