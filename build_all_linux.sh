@@ -4,7 +4,7 @@ PROJECT_ROOT="$(dirname "$(readlink -f "$0")")"
 cd "$PROJECT_ROOT"
 
 echo "====================================="
-echo "[INFO] Building hub in Release mode..."
+echo "[INFO] Building Elypso hub in Release mode..."
 echo "====================================="
 echo ""
 
@@ -17,7 +17,7 @@ fi
 
 echo ""
 echo "====================================="
-echo "[INFO] Building hub in Debug mode..."
+echo "[INFO] Building Elypso hub in Debug mode..."
 echo "====================================="
 echo ""
 
@@ -30,7 +30,7 @@ fi
 
 echo ""
 echo "====================================="
-echo "[SUCCESS] Finished building and installing hub!"
+echo "[SUCCESS] Finished building and installing Elypso hub!"
 echo "====================================="
 echo ""
 

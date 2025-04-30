@@ -1,13 +1,26 @@
 @echo off
 
 set "PROJECT_ROOT=%~dp0"
-cd "%PROJECT_ROOT%"
 
 echo =====================================
-echo [INFO] Building hub in Release mode...
+echo [INFO] Copying binaries...
 echo =====================================
 echo.
 
+cd "%PROJECT_ROOT%\_external_shared"
+cmd /c "copy_windows.bat"
+if errorlevel 1 (
+    echo [ERROR] Failed to copy binaries.
+    pause
+    exit /b 1
+)
+
+echo =====================================
+echo [INFO] Building Elypso hub in Release mode...
+echo =====================================
+echo.
+
+cd "%PROJECT_ROOT%"
 cmd /c "build_windows_release.bat"
 if errorlevel 1 (
     echo [ERROR] Release build failed.
@@ -17,7 +30,7 @@ if errorlevel 1 (
 
 echo.
 echo =====================================
-echo [INFO] Building hub in Debug mode...
+echo [INFO] Building Elypso hub in Debug mode...
 echo =====================================
 echo.
 
@@ -30,7 +43,7 @@ if errorlevel 1 (
 
 echo.
 echo =====================================
-echo [SUCCESS] Finished building and installing hub!
+echo [SUCCESS] Finished building and installing Elypso hub!
 echo =====================================
 echo.
 
