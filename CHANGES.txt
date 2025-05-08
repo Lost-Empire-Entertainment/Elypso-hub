@@ -6,3 +6,9 @@
 1.1.0.0002:
 
 - fixed hub closing on linux as a fallback to hub freezing when opening any project
+
+1.1.0.0003:
+
+- reduced minimum size to 480x270px
+- changed imgui font global scale from 1.5 to 1.2
+- minor ui size changes

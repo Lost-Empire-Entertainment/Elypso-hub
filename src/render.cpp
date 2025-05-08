@@ -50,7 +50,7 @@ namespace Graphics
 		glfwMakeContextCurrent(window);
 		glfwSetFramebufferSizeCallback(window, UpdateAfterRescale);
 		glfwGetWindowSize(window, &windowedWidth, &windowedHeight);
-		glfwSetWindowSizeLimits(window, 800, 600, 7680, 4320);
+		glfwSetWindowSizeLimits(window, 480, 270, 7680, 4320);
 		glfwSwapInterval(1);
 
 		Hub::defaultPath = current_path().generic_string();

@@ -87,7 +87,7 @@ namespace Graphics::GUI
 		style.TabRounding = 6;
 		style.FramePadding = ImVec2(6, 2);
 		style.ItemSpacing = ImVec2(0, 5);
-		io.FontGlobalScale = 1.5f;
+		io.FontGlobalScale = 1.2f;
 
 		isImguiInitialized = true;
 	}
@@ -150,8 +150,8 @@ namespace Graphics::GUI
 
 		ImGui::Begin("Panels", NULL, mainWindowFlags);
 
-		ImGui::SetWindowPos(ImVec2(300, 0));
-		ImGui::SetWindowSize(ImVec2(static_cast<float>(framebufferWidth) - 300, static_cast<float>(framebufferHeight)));
+		ImGui::SetWindowPos(ImVec2(200, 0));
+		ImGui::SetWindowSize(ImVec2(static_cast<float>(framebufferWidth) - 200, static_cast<float>(framebufferHeight)));
 
 		int panelHeightInt = static_cast<int>(panelHeight);
 		int panelSpacingInt = static_cast<int>(panelSpacing);
@@ -176,7 +176,7 @@ namespace Graphics::GUI
 
 				ImGui::Begin(file.c_str(), NULL, windowFlags);
 
-				ImGui::SetWindowSize(ImVec2(static_cast<float>(framebufferWidth) - 335, 200));
+				ImGui::SetWindowSize(ImVec2(static_cast<float>(framebufferWidth) - 235, 100));
 
 				if (ImGui::IsWindowHovered(ImGuiHoveredFlags_AnyWindow)
 					&& !CreateProject::renderCreateProjectWindow)
@@ -224,7 +224,7 @@ namespace Graphics::GUI
 	{
 		glfwGetFramebufferSize(Render::window, &framebufferWidth, &framebufferHeight);
 
-		ImGui::SetNextWindowSize(ImVec2(300, static_cast<float>(framebufferHeight)));
+		ImGui::SetNextWindowSize(ImVec2(200, static_cast<float>(framebufferHeight)));
 		ImGui::SetNextWindowPos(ImVec2(0.0f, 0.0f));
 
 		ImGuiWindowFlags mainWindowFlags =
@@ -236,21 +236,21 @@ namespace Graphics::GUI
 
 		ImGui::Begin("Buttons", NULL, mainWindowFlags);
 
-		if (ImGui::Button("Create new project", ImVec2(285, 50)))
+		if (ImGui::Button("Create new project", ImVec2(185, 50)))
 		{
 			GUI_Hub::NewProject();
 		}
 
 		ImGui::Dummy(ImVec2(0.0f, 15.0f));
 
-		if (ImGui::Button("Set project folder", ImVec2(285, 50)))
+		if (ImGui::Button("Set project folder", ImVec2(185, 50)))
 		{
 			GUI_Hub::SetProjectsFolder();
 		}
 
 		ImGui::Dummy(ImVec2(0.0f, 15.0f));
 
-		if (ImGui::Button("Set engine path", ImVec2(285, 50)))
+		if (ImGui::Button("Set engine path", ImVec2(185, 50)))
 		{
 			GUI_Hub::SetEnginePath();
 		}
