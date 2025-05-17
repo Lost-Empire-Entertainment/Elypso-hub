@@ -41,6 +41,10 @@ set(EXT_IMGUI_DIR "${CMAKE_SOURCE_DIR}/_external_shared/ImGui")
 set(EXT_MAGIC_ENUM_DIR "${CMAKE_SOURCE_DIR}/_external_shared/magic_enum")
 set(EXT_STB_IMAGE_DIR "${CMAKE_SOURCE_DIR}/_external_shared/Stb_image")
 
+if (UNIX)
+	find_package(PkgConfig REQUIRED)
+endif()
+
 # Add GLAD
 add_library(glad STATIC ${EXT_GLAD_DIR}/glad.c)
 target_include_directories(glad PUBLIC ${EXT_GLAD_DIR}/..)
@@ -53,7 +57,7 @@ if (WIN32)
 		set(GLFW_LIBRARY_PATH "${EXT_GLFW_DIR}/debug/glfw3dll.lib")
 	endif()
 else()
-	find_package(glfw3 REQUIRED)
+	pkg_check_modules(GLFW3 REQUIRED glfw3)
 endif()
 
 # Add magic_enum
