@@ -43,6 +43,14 @@ set(EXT_STB_IMAGE_DIR "${CMAKE_SOURCE_DIR}/_external_shared/Stb_image")
 
 if (UNIX)
 	find_package(PkgConfig REQUIRED)
+
+	# Zenity is required for platform ui outside of the program
+	find_program(ZENITY_EXECUTABLE zenity)
+	if (NOT ZENITY_EXECUTABLE)
+		message(FATAL_ERROR "Zenity is not installed! Please install it with 'sudo apt install zenity'")
+	else()
+		message(STATUS "Zenity found at: ${ZENITY_EXECUTABLE}")
+	endif()
 endif()
 
 # Add GLAD
