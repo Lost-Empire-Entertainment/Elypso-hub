@@ -12,3 +12,4 @@
 - reduced minimum size to 480x270px
 - changed imgui font global scale from 1.5 to 1.2
 - minor ui size changes
+- hub no longer needs to be rebuilt every time
