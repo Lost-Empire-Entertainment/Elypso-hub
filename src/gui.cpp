@@ -119,7 +119,7 @@ namespace Graphics::GUI
 				ImGuiDockNodeFlags dockFlags =
 					ImGuiDockNodeFlags_PassthruCentralNode;
 
-				ImGui::DockSpaceOverViewport(ImGui::GetMainViewport(), dockFlags);
+				ImGui::DockSpaceOverViewport(0, ImGui::GetMainViewport(), dockFlags, nullptr);
 
 				GUI_Hub::RenderPanels();
 				GUI_Hub::RenderButtons();
