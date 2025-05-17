@@ -58,6 +58,7 @@ if (WIN32)
 	endif()
 else()
 	pkg_check_modules(GLFW3 REQUIRED glfw3)
+	message(STATUS "Found GLFW via pkg-config")
 endif()
 
 # Add magic_enum
