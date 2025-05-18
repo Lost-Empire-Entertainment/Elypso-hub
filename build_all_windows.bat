@@ -24,7 +24,7 @@ echo =====================================
 echo.
 
 cd "%PROJECT_ROOT%"
-cmd /c "build_windows_release.bat" %CLEAN_ARG%
+cmd /c "build_windows_release.bat %CLEAN_ARG%"
 if errorlevel 1 (
     echo [ERROR] Release build failed.
     pause
@@ -37,7 +37,7 @@ echo [INFO] Building Elypso hub in Debug mode...
 echo =====================================
 echo.
 
-cmd /c "build_windows_debug.bat" %CLEAN_ARG%
+cmd /c "build_windows_debug.bat %CLEAN_ARG%"
 if errorlevel 1 (
     echo [ERROR] Debug build failed.
     pause
