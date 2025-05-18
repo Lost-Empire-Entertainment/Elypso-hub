@@ -47,7 +47,7 @@ namespace Core
 {
 	void Hub::Initialize()
 	{
-		version = "Pre-release 1.1.0.0002";
+		version = "1.1.0";
 #ifdef NDEBUG
 #else
 		version = version + " [DEBUG]";
