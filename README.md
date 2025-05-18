@@ -1,6 +1,6 @@
 # Elypso hub
 
-[![License](https://img.shields.io/badge/license-Proprietary-blue)](LICENSE.md)
+![License](https://img.shields.io/badge/license-Proprietary-blue)](LICENSE.md)
 ![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux-brightgreen)
 ![Development Stage](https://img.shields.io/badge/development-Release-brightgreen)
 
@@ -8,11 +8,10 @@
 
 **Elypso hub** is considered to be in a stable state, most of the features are functional but a full 2.0 rewrite is coming in the near future.
 
-The documentation for **Elypso hub** will be found at the [official website](https://elypsoengine.com)  in the near future so please look there for information, this README file will not cover how to install or use this program.
+The documentation for **Elypso hub** will be found at the [official website](https://elypsoengine.com) in the near future so please look there for information, this README file will not cover how to install or use this program.
 
-Please note - this is simply the repository for Elypso hub, it does not contain the engine or compiler source code.
-- Get the Elypso compiler from [here](https://github.com/Lost-Empire-Entertainment/Elypso-compiler)
-- Get the Elypso engine from [here](https://github.com/Lost-Empire-Entertainment/Elypso-engine)
+Please note - this is simply the repository for Elypso hub, it does not contain the engine source code.
+- Get Elypso engine from [here](https://github.com/Lost-Empire-Entertainment/Elypso-engine)
 
 ---
 
@@ -36,8 +35,6 @@ If this is your first time running the program then Windows may throw false posi
 
 [Official Youtube channel](https://youtube.com/greenlaser)
 
-[Official Twitch channel](https://www.twitch.tv/greenlaseer)
-
 [Official website](https://elypsoengine.com)
 
 [Track development on the Trello board](https://trello.com/b/hbt6ebCZ/elypso-engine)
@@ -48,4 +45,4 @@ If this is your first time running the program then Windows may throw false posi
 
 * [Greenlaser](https://github.com/greeenlaser) - *Lead developer*
 
-* [tkpmonke](https://github.com/tkpmonke) - *Tester, Linux maintainer*
+* [tkpmonke](https://github.com/tkpmonke) - *Tester*
