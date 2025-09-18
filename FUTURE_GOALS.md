@@ -1,6 +1,3 @@
-Got it — let’s keep Elypso Hub’s doc **strictly about what the Hub does**, not about how Elypso Engine works internally. Here’s the cut-down, laser-focused version:
-
-```markdown
 # Elypso Hub Documentation
 
 ## Overview
@@ -55,8 +52,3 @@ It is **not** part of the engine or game runtime — it operates as a separate t
   - Elypso Engine distributed as a prebuilt DLL with API headers (outside the scope of Elypso Hub).
 - Developers can use prebuilt releases without building from source.
 - Advanced users may fork, extend, or build their own versions directly from source.
-
----
-```
-
-Do you want me to now make a **separate doc just for `.eproj` format specification**, like a technical reference, so Hub developers (or contributors) know exactly what fields it holds?
