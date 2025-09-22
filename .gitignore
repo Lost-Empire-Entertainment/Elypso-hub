@@ -1,4 +1,7 @@
-# Elypso hub ignored files and folders
-.vs/
-build-release/
-build-debug/
+/debug
+/release
+/.vs
+*.pdb 
+
+//ignore vulkan shader spv files
+*.spv
