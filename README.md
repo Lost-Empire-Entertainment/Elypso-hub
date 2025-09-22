@@ -4,7 +4,7 @@
 ![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux-brightgreen)
 ![Development Stage](https://img.shields.io/badge/development-Release-brightgreen)
 
-# **Elypso hub** codebase is heavily outdated and focus is currently on other projects. Elypso hub will be fresly remade once [KalaWindow 0.3](https://github.com/kalakit/kalawindow) and [Circuit Chan](https://github.com/lost-empire-entertainment/circuit-chan) have released.
+# This branch is heavily outdated and **Elypso hub** is being remade on the _remake branch. Follow that if you want to latest currently unstable changes. This branch will be removed one the remake is ready to replace the contents of this branch.
 
 **Elypso hub** is the project launcher used by Elypso engine. It uses several libraries listed in [the library file](LIBRARIES.md), it is built with C++ 20 and it runs natively on Windows and Linux (tested on Ubuntu-based distros and Arch).
 
