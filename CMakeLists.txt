@@ -176,7 +176,7 @@ endforeach()
 set(COPY_TARGETS README.md LICENSE.md)
 foreach(FILE ${COPY_TARGETS})
 add_custom_command(TARGET Elypso_Hub POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E remove 
+    COMMAND ${CMAKE_COMMAND} -E rm -f 
 		"$<TARGET_FILE_DIR:Elypso_Hub>/${FILE}"
     COMMAND ${CMAKE_COMMAND} -E copy
 		"${CMAKE_SOURCE_DIR}/${FILE}"
@@ -186,7 +186,7 @@ endforeach()
 
 # Copy entire docs folder
 add_custom_command(TARGET Elypso_Hub POST_BUILD
-	COMMAND ${CMAKE_COMMAND} -E remove
+	COMMAND ${CMAKE_COMMAND} -E rm -rf
 		"$<TARGET_FILE_DIR:Elypso_Hub>/docs"
 	COMMAND ${CMAKE_COMMAND} -E copy_directory
 		"${CMAKE_SOURCE_DIR}/docs"
