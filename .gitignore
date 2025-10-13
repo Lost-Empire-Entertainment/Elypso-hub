@@ -1,4 +1,17 @@
-# Elypso hub ignored files and folders
+# Default VS stuff
+out/
 .vs/
-build-release/
-build-debug/
+
+# CMake build targets
+build/
+debug/
+release/
+
+# Large files
+*.pdb
+*.obj
+*.exp
+
+# Misc
+*.spv # Vulkan shader files
+*.exe
