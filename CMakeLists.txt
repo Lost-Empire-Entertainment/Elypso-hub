@@ -1,7 +1,7 @@
 ﻿cmake_minimum_required(VERSION 3.29.2)
 
 set(PROGRAM_VERSION "Elypso Hub 2026.1.0")
-set(PROGRAM_VERSION_NUMBER 2026.1.0.0)
+set(PROGRAM_VERSION_NUMBER 1.0.0.0)
 
 project("Elypso_Hub" VERSION ${PROGRAM_VERSION_NUMBER} LANGUAGES C CXX)
 
@@ -76,7 +76,10 @@ target_include_directories(Elypso_Hub PRIVATE
 )
 
 # Preprocessor Defines
-target_compile_definitions(Elypso_Hub PRIVATE WIN32_LEAN_AND_MEAN NOMINMAX)
+target_compile_definitions(Elypso_Hub PRIVATE 
+	WIN32_LEAN_AND_MEAN
+	NOMINMAX
+)
 
 # Link libraries
 target_link_libraries(Elypso_Hub PRIVATE
