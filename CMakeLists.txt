@@ -39,15 +39,12 @@ set(INCLUDE_DIR "${CMAKE_SOURCE_DIR}/include")
 set(EXT_SHARED_DIR "${CMAKE_SOURCE_DIR}/_external_shared")
 
 set(EXT_WINDOW_DIR "${EXT_SHARED_DIR}/Kalawindow")
-set(EXT_FREETYPE_DIR "${EXT_SHARED_DIR}/FreeType")
 
 # Library Paths
 if(IS_RELEASE)
     set(WINDOW_LIBRARY_PATH "${EXT_WINDOW_DIR}/release/_KalaWindow03.lib")
-	set(FREETYPE_LIBRARY_PATH "${EXT_FREETYPE_DIR}/release/freetype.lib")
 else()
     set(WINDOW_LIBRARY_PATH "${EXT_WINDOW_DIR}/debug/_KalaWindow03d.lib")
-	set(FREETYPE_LIBRARY_PATH "${EXT_FREETYPE_DIR}/debug/freetyped.lib")
 endif()
 
 # Source Files
@@ -88,8 +85,7 @@ target_compile_definitions(Elypso_Hub PRIVATE
 # Link libraries
 target_link_libraries(Elypso_Hub PRIVATE
 	opengl32
-	${WINDOW_LIBRARY_PATH}
-	${FREETYPE_LIBRARY_PATH})
+	${WINDOW_LIBRARY_PATH})
 
 # Hide console in release mode
 if(IS_RELEASE)
@@ -154,23 +150,18 @@ add_custom_command(TARGET Elypso_Hub POST_BUILD
 # Copy external binaries
 if(IS_RELEASE)
 	set(BIN_KALAWINDOW "${EXT_WINDOW_DIR}/release")
-	set(BIN_FREETYPE "${EXT_FREETYPE_DIR}/release")
 else()
 	set(BIN_KALAWINDOW "${EXT_WINDOW_DIR}/debug")
-	set(BIN_FREETYPE "${EXT_FREETYPE_DIR}/debug")
 endif()
 
 if (IS_RELEASE)
 	file(GLOB BIN_FILES
 		"${BIN_KALAWINDOW}/*.dll"
-		"${BIN_FREETYPE}/*.dll"
 	)
 else()
 	file(GLOB BIN_FILES
 		"${BIN_KALAWINDOW}/*.dll"
 		"${BIN_KALAWINDOW}/*.pdb"
-		"${BIN_FREETYPE}/*.dll"
-		"${BIN_FREETYPE}/*.pdb"
 	)
 endif()
 
