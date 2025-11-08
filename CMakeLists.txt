@@ -42,9 +42,9 @@ set(EXT_WINDOW_DIR "${EXT_SHARED_DIR}/Kalawindow")
 
 # Library Paths
 if(IS_RELEASE)
-    set(WINDOW_LIBRARY_PATH "${EXT_WINDOW_DIR}/release/_KalaWindow03.lib")
+    set(WINDOW_LIBRARY_PATH "${EXT_WINDOW_DIR}/release/_KalaWindow1.lib")
 else()
-    set(WINDOW_LIBRARY_PATH "${EXT_WINDOW_DIR}/debug/_KalaWindow03d.lib")
+    set(WINDOW_LIBRARY_PATH "${EXT_WINDOW_DIR}/debug/_KalaWindow1d.lib")
 endif()
 
 # Source Files
