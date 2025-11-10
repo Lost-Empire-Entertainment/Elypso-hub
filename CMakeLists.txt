@@ -39,12 +39,15 @@ set(INCLUDE_DIR "${CMAKE_SOURCE_DIR}/include")
 set(EXT_SHARED_DIR "${CMAKE_SOURCE_DIR}/_external_shared")
 
 set(EXT_WINDOW_DIR "${EXT_SHARED_DIR}/Kalawindow")
+set(EXT_GRAPHICS_DIR "${EXT_SHARED_DIR}/KalaGraphics")
 
 # Library Paths
 if(IS_RELEASE)
     set(WINDOW_LIBRARY_PATH "${EXT_WINDOW_DIR}/release/_KalaWindow1.lib")
+	set(GRAPHICS_LIBRARY_PATH "${EXT_GRAPHICS_DIR}/release/_KalaGraphics1.lib")
 else()
     set(WINDOW_LIBRARY_PATH "${EXT_WINDOW_DIR}/debug/_KalaWindow1d.lib")
+	set(GRAPHICS_LIBRARY_PATH "${EXT_GRAPHICS_DIR}/debug/_KalaGraphics1d.lib")
 endif()
 
 # Source Files
@@ -74,6 +77,7 @@ target_include_directories(Elypso_Hub PRIVATE
 	"${INCLUDE_DIR}"
 	"${EXT_SHARED_DIR}"
 	"${EXT_SHARED_DIR}/KalaWindow/include"
+	"${EXT_SHARED_DIR}/KalaGraphics/include"
 )
 
 # Preprocessor Defines
@@ -85,7 +89,9 @@ target_compile_definitions(Elypso_Hub PRIVATE
 # Link libraries
 target_link_libraries(Elypso_Hub PRIVATE
 	opengl32
-	${WINDOW_LIBRARY_PATH})
+	${WINDOW_LIBRARY_PATH}
+	${GRAPHICS_LIBRARY_PATH}
+)
 
 # Hide console in release mode
 if(IS_RELEASE)
@@ -150,18 +156,23 @@ add_custom_command(TARGET Elypso_Hub POST_BUILD
 # Copy external binaries
 if(IS_RELEASE)
 	set(BIN_KALAWINDOW "${EXT_WINDOW_DIR}/release")
+	set(BIN_KALAGRAPHICS "${EXT_GRAPHICS_DIR}/release")
 else()
 	set(BIN_KALAWINDOW "${EXT_WINDOW_DIR}/debug")
+	set(BIN_KALAGRAPHICS "${EXT_GRAPHICS_DIR}/debug")
 endif()
 
 if (IS_RELEASE)
 	file(GLOB BIN_FILES
 		"${BIN_KALAWINDOW}/*.dll"
+		"${BIN_KALAGRAPHICS}/*.dll"
 	)
 else()
 	file(GLOB BIN_FILES
 		"${BIN_KALAWINDOW}/*.dll"
 		"${BIN_KALAWINDOW}/*.pdb"
+		"${BIN_KALAGRAPHICS}/*.dll"
+		"${BIN_KALAGRAPHICS}/*.pdb"
 	)
 endif()
 
