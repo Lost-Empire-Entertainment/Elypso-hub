@@ -76,8 +76,6 @@ target_sources(Elypso_Hub PRIVATE ${HEADERS})
 target_include_directories(Elypso_Hub PRIVATE
 	"${INCLUDE_DIR}"
 	"${EXT_SHARED_DIR}"
-	"${EXT_SHARED_DIR}/KalaWindow/include"
-	"${EXT_SHARED_DIR}/KalaGraphics/include"
 )
 
 # Preprocessor Defines
