@@ -43,11 +43,11 @@ set(EXT_GRAPHICS_DIR "${EXT_SHARED_DIR}/KalaGraphics")
 
 # Library Paths
 if(IS_RELEASE)
-    set(WINDOW_LIBRARY_PATH "${EXT_WINDOW_DIR}/release/_KalaWindow1.lib")
-	set(GRAPHICS_LIBRARY_PATH "${EXT_GRAPHICS_DIR}/release/_KalaGraphics1.lib")
+    set(WINDOW_LIBRARY_PATH "${EXT_WINDOW_DIR}/release/KalaWindow1.lib")
+	set(GRAPHICS_LIBRARY_PATH "${EXT_GRAPHICS_DIR}/release/KalaGraphics1.lib")
 else()
-    set(WINDOW_LIBRARY_PATH "${EXT_WINDOW_DIR}/debug/_KalaWindow1d.lib")
-	set(GRAPHICS_LIBRARY_PATH "${EXT_GRAPHICS_DIR}/debug/_KalaGraphics1d.lib")
+    set(WINDOW_LIBRARY_PATH "${EXT_WINDOW_DIR}/debug/KalaWindow1d.lib")
+	set(GRAPHICS_LIBRARY_PATH "${EXT_GRAPHICS_DIR}/debug/KalaGraphics1d.lib")
 endif()
 
 # Source Files
