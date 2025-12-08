@@ -39,7 +39,7 @@ set(INCLUDE_DIR "${CMAKE_SOURCE_DIR}/include")
 set(EXT_SHARED_DIR "${CMAKE_SOURCE_DIR}/_external_shared")
 
 set(EXT_WINDOW_DIR "${EXT_SHARED_DIR}/Kalawindow")
-set(EXT_GRAPHICS_DIR "${EXT_SHARED_DIR}/KalaGraphics")
+set(EXT_GRAPHICS_DIR "${EXT_SHARED_DIR}/KalaGL")
 
 # Library Paths
 if(IS_RELEASE)
@@ -47,7 +47,7 @@ if(IS_RELEASE)
 	set(GRAPHICS_LIBRARY_PATH "${EXT_GRAPHICS_DIR}/release/KalaGraphics1.lib")
 else()
     set(WINDOW_LIBRARY_PATH "${EXT_WINDOW_DIR}/debug/KalaWindow1d.lib")
-	set(GRAPHICS_LIBRARY_PATH "${EXT_GRAPHICS_DIR}/debug/KalaGraphics1d.lib")
+	set(GRAPHICS_LIBRARY_PATH "${EXT_GRAPHICS_DIR}/debug/KalaGL1d.lib")
 endif()
 
 # Source Files
@@ -76,6 +76,8 @@ target_sources(Elypso_Hub PRIVATE ${HEADERS})
 target_include_directories(Elypso_Hub PRIVATE
 	"${INCLUDE_DIR}"
 	"${EXT_SHARED_DIR}"
+	"${EXT_SHARED_DIR}/KalaWindow/include"
+	"${EXT_SHARED_DIR}/KalaGL/include"
 )
 
 # Preprocessor Defines
