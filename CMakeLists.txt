@@ -156,23 +156,23 @@ add_custom_command(TARGET Elypso_Hub POST_BUILD
 # Copy external binaries
 if(IS_RELEASE)
 	set(BIN_KALAWINDOW "${EXT_WINDOW_DIR}/release")
-	set(BIN_KALAGRAPHICS "${EXT_GRAPHICS_DIR}/release")
+	set(BIN_KALAGL "${EXT_GRAPHICS_DIR}/release")
 else()
 	set(BIN_KALAWINDOW "${EXT_WINDOW_DIR}/debug")
-	set(BIN_KALAGRAPHICS "${EXT_GRAPHICS_DIR}/debug")
+	set(BIN_KALAGL "${EXT_GRAPHICS_DIR}/debug")
 endif()
 
 if (IS_RELEASE)
 	file(GLOB BIN_FILES
 		"${BIN_KALAWINDOW}/*.dll"
-		"${BIN_KALAGRAPHICS}/*.dll"
+		"${BIN_KALAGL}/*.dll"
 	)
 else()
 	file(GLOB BIN_FILES
 		"${BIN_KALAWINDOW}/*.dll"
 		"${BIN_KALAWINDOW}/*.pdb"
-		"${BIN_KALAGRAPHICS}/*.dll"
-		"${BIN_KALAGRAPHICS}/*.pdb"
+		"${BIN_KALAGL}/*.dll"
+		"${BIN_KALAGL}/*.pdb"
 	)
 endif()
 
