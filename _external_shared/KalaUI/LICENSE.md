@@ -1,4 +1,4 @@
-[KalaGL source repository](https://github.com/KalaKit/KalaGL)
+[KalaUI source repository](https://github.com/KalaKit/KalaUI)
 
 ---
 

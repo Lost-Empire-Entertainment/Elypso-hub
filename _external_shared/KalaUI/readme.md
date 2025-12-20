@@ -1,8 +1,8 @@
-# KalaGL
+# KalaUI
 
-**KalaGL** is a graphics library for OpenGL 3.3 that does not own or create a window or the GL context. It is recommended to use [KalaWindow](https://github.com/kalakit/kalawindow) to get the GL context and the handle (HDC) but theoretically any other window context initializer and GL library like GLFW should work out of the box. **KalaGL** can initialize hand-picked GL core, wgl and glx functions for OpenGL 3.3 so helper libraries like Glad are not required.
+**KalaUI** is a retained mode production ready UI library for OpenGL 3.3 that does not own or create a window or the GL context. It is recommended to use [KalaWindow](https://github.com/kalakit/kalawindow) to get the GL context and the handle (HDC) but theoretically any other window context initializer and GL library like GLFW should work out of the box.
 
-**KalaGL** provides shader, texture, UI, camera, model and light handling in OpenGL 3.3. The UI framework is fully original, with a widget system where Image and Text are the root widgets. Shaders and textures can be hot-reloaded, where shaders fully reimport the new external shader file, but textures simply reload with new pixel data.
+**KalaUI** provides a fully self made in-house UI framework, with a widget system where Image and Text are the root widgets.
 
 ---
 
@@ -25,14 +25,9 @@
 | Render Pipeline | Status         | Notes                                             |
 |-----------------|----------------|---------------------------------------------------|
 | OpenGL          | Supported      | Internally locked to OpenGL 3.3                   |
-| Vulkan          | Planned        | Support for Vulkan 1.3 coming in KalaVK in the future |
+| Vulkan          | Planned        | Support for Vulkan 1.3 coming in a future version |
 | DirectX         | Not Supported  | No plans for DirectX compatibility                |
 | MoltenVK        | Not Supported  | No plans for MoltenVK compatibility               |
-
-Some **KalaGL** headers pull in official GL extension headers:
-- `opengl_functions_core.hpp` includes `glcorearb.h` and `glext.h`
-- `opengl_functions_win.hpp` includes `wgleht.hpp`
-- `opengl_functions_linux.hpp` includes `glxeht.hpp`
 
 ---
 

@@ -13,7 +13,7 @@
 #include <algorithm>
 #include <type_traits>
 
-namespace KalaGL::Core
+namespace KalaUI::Core
 {
 	using std::unordered_map;
 	using std::vector;
@@ -29,7 +29,7 @@ namespace KalaGL::Core
 	//Stores local non-owning pointers per T instance inside the Registry struct
 	template<typename T>
 		requires is_class_v<T>
-	struct LIB_API KalaGLHierarchy
+	struct LIB_API KalaUIHierarchy
 	{
 		T* thisObject{};
 		T* parent{};
@@ -240,17 +240,17 @@ namespace KalaGL::Core
 	};
 
 	//Stores unique_ptrs and non-owning pointers of class T for ID-based lookups,
-	//should always be stored as 'static inline KalaGLRegistry<T> registry'
+	//should always be stored as 'static inline KalaUIRegistry<T> registry'
 	template<typename T>
 		requires is_class_v<T>
-	struct LIB_API KalaGLRegistry
+	struct LIB_API KalaUIRegistry
 	{
 		//Owner registry with ID as key
 		static inline unordered_map<u32, unique_ptr<T>> createdContent{};
 		//Runtime non-owning pointers
 		static inline vector<T*> runtimeContent{};
 		//Hierarchy content for storing parent-child relations per instance of this class
-		static inline unordered_map<T*, KalaGLHierarchy<T>> hierarchy{};
+		static inline unordered_map<T*, KalaUIHierarchy<T>> hierarchy{};
 
 		//Get non-owning value by ID
 		static inline T* GetContent(u32 targetID)
@@ -278,7 +278,7 @@ namespace KalaGL::Core
 			runtimeContent.push_back(raw);
 			
 			//add hierarchy node
-			hierarchy[raw] = KalaGLHierarchy<T>{};
+			hierarchy[raw] = KalaUIHierarchy<T>{};
 			hierarchy[raw].thisObject = raw;
 
 			return true;

@@ -11,9 +11,9 @@
 #include "KalaHeaders/core_utils.hpp"
 #include "KalaHeaders/math_utils.hpp"
 
-#include "core/kg_registry.hpp"
+#include "core/ku_registry.hpp"
 
-namespace KalaGL::Graphics
+namespace KalaUI::OpenGL
 {
 	using std::string;
 	using std::array;
@@ -25,7 +25,7 @@ namespace KalaGL::Graphics
 	using KalaHeaders::KalaMath::mat3;
 	using KalaHeaders::KalaMath::mat4;
 	
-	using KalaGL::Core::KalaGLRegistry;
+	using KalaUI::Core::KalaUIRegistry;
 
 	enum class OpenGL_ShaderType
 	{
@@ -55,12 +55,12 @@ namespace KalaGL::Graphics
 	class LIB_API OpenGL_Shader
 	{
 	public:
-		static inline KalaGLRegistry<OpenGL_Shader> registry{};
+		static inline KalaUIRegistry<OpenGL_Shader> registry{};
 
 		//Create a new shader with up to three types of shader files.
 		//Geometry shaders are optional but vert and frag shader must always be filled
 		static OpenGL_Shader* Initialize(
-			u32 glID,
+			const uintptr_t* glContext,
 			const string& shaderName,
 			const array<OpenGL_ShaderData, 3>& shaderData);
 
@@ -89,8 +89,9 @@ namespace KalaGL::Graphics
 		inline u32 GetID() const { return ID; }
 		//Returns the OpenGL program ID of this shader
 		inline u32 GetProgramID() const { return programID; }
-		//Returns the OpenGL context ID of this shader
-		inline u32 GetGLID() const { return glID; }
+		
+		//Returns the OpenGL context of this shader
+		inline const uintptr_t* GetGLContext() const { return glContext; }
 
 		//Returns true if this shader is loaded
 		inline bool IsShaderLoaded(OpenGL_ShaderType targetType) const
@@ -165,11 +166,9 @@ namespace KalaGL::Graphics
 		}
 
 		//Bind current shader, requires handle (HDC) from your window
-		bool Bind(
-			u32 glID,
-			uintptr_t handle);
+		bool Bind(const uintptr_t* externalGLContext);
 
-		bool HotReload(u32 windowID);
+		bool HotReload(const uintptr_t* glContext);
 
 		void SetBool(u32 programID, const string& name, bool value) const;
 		void SetInt(u32 programID, const string& name, i32 value) const;
@@ -189,13 +188,13 @@ namespace KalaGL::Graphics
 		static inline bool isVerboseLoggingEnabled{};
 
 		bool isInitialized{};
-		bool checkedBindOnce{};
 
 		string name{};
 
 		u32 ID{};
 		u32 programID{};
-		u32 glID{};
+		
+		const uintptr_t* glContext{};
 
 		OpenGL_ShaderData vertData{};
 		OpenGL_ShaderData fragData{};

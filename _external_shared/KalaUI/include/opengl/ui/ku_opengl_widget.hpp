@@ -14,11 +14,16 @@
 #include "KalaHeaders/math_utils.hpp"
 #include "KalaHeaders/key_standards.hpp"
 
-#include "graphics/kg_opengl_shader.hpp"
-#include "graphics/kg_opengl_texture.hpp"
-#include "core/kg_registry.hpp"
+#include "opengl/ku_opengl_shader.hpp"
+#include "opengl/ku_opengl_texture.hpp"
+#include "core/ku_registry.hpp"
 
-namespace KalaGL::UI
+namespace KalaUI::OpenGL
+{
+	class OpenGL_Manager; //forward-declare the manager
+}
+
+namespace KalaUI::OpenGL::UI
 {
 	using std::string;
 	using std::vector;
@@ -40,9 +45,9 @@ namespace KalaGL::UI
 	using KalaHeaders::KalaKeyStandards::MouseButton;
 	using KalaHeaders::KalaKeyStandards::KeyboardButton;
 
-	using KalaGL::Graphics::OpenGL_Shader;
-	using KalaGL::Graphics::OpenGL_Texture;
-	using KalaGL::Core::KalaGLRegistry;
+	using KalaUI::OpenGL::OpenGL_Shader;
+	using KalaUI::OpenGL::OpenGL_Texture;
+	using KalaUI::Core::KalaUIRegistry;
 
 	constexpr u16 MAX_Z_ORDER = 1024;
 
@@ -69,6 +74,8 @@ namespace KalaGL::UI
 	struct OpenGL_Widget_Render
 	{
 		bool canUpdate = true;
+		
+		const uintptr_t* glContext{};
 
 		//no children render past this widget size if true
 		bool isClipping{};
@@ -122,8 +129,9 @@ namespace KalaGL::UI
 
 	class LIB_API OpenGL_Widget
 	{
+		friend class OpenGL_Manager; //friend-include the manager
 	public:
-		static inline KalaGLRegistry<OpenGL_Widget> registry{};
+		static inline KalaUIRegistry<OpenGL_Widget> registry{};
 	
 		//Returns all hit widgets at mouse position sorted by highest Z first
 		static vector<OpenGL_Widget*> GetHitWidgets(vec2 mousePos);
@@ -133,10 +141,8 @@ namespace KalaGL::UI
 		//
 
 		inline bool IsInitialized() const { return isInitialized; }
-
-		//Render this widget. Requires handle (HDC) from your window
+		
 		virtual bool Render(
-			uintptr_t handle,
 			const mat4& projection,
 			f32 viewportHeight) = 0;
 
@@ -162,7 +168,8 @@ namespace KalaGL::UI
 
 		inline u32 GetID() const { return ID; }
 		inline u32 GetWindowID() const { return windowID; }
-		inline u32 GetGLID() const { return glID; }
+		
+		inline const uintptr_t* GetGLContext() const { return render.glContext; }
 
 		inline void SetUpdateState(bool newValue) { render.canUpdate = newValue; }
 		inline bool CanUpdate() const { return render.canUpdate; }
@@ -603,7 +610,6 @@ namespace KalaGL::UI
 
 		u32 ID{};
 		u32 windowID{};
-		u32 glID{};
 
 		bool isHovered{};
 

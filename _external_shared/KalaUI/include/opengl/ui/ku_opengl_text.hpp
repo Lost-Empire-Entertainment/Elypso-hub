@@ -8,22 +8,28 @@
 #include "KalaHeaders/math_utils.hpp"
 #include "KalaHeaders/import_kfd.hpp"
 
-#include "ui/kg_opengl_widget.hpp"
+#include "opengl/ui/ku_opengl_widget.hpp"
 
-namespace KalaGL::UI
+namespace KalaUI::OpenGL
+{
+	class OpenGL_Manager; //forward-declare the manager
+}
+
+namespace KalaUI::OpenGL::UI
 {
 	using KalaHeaders::KalaMath::kclamp;
 	using KalaHeaders::KalaFontData::GlyphBlock;
-
+	
 	class LIB_API OpenGL_Text : public OpenGL_Widget
 	{
+		friend class OpenGL_Manager; //friend-include the manager
 	public:
 		//Initialize a new Text widget.
 		//Parent widget and texture are optional
 		static OpenGL_Text* Initialize(
 			const string& name,
 			u32 windowID,
-			u32 glID,
+			const uintptr_t* glContext,
 			u32 glyphIndex,
 			u32 fontID,
 			const vec2 pos,
@@ -33,9 +39,7 @@ namespace KalaGL::UI
 			OpenGL_Shader* shader,
 			OpenGL_Widget* parentWidget = {});
 			
-		//Render this text widget. Requires handle (HDC) from your window
 		virtual bool Render(
-			uintptr_t handle,
 			const mat4& projection,
 			f32 viewportHeight) override;
 
@@ -83,7 +87,7 @@ namespace KalaGL::UI
 		virtual ~OpenGL_Text() override;
 	protected:
 		virtual void UpdateAABB(f32 viewportHeight);
-	private:
+	private:	
 		vector<u32> text{};            //the text typed by the user
 		vector<GlyphBlock*> letters{}; //all the letters that have been typed to this text
 		

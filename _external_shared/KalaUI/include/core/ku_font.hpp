@@ -12,9 +12,9 @@
 #include "KalaHeaders/math_utils.hpp"
 #include "KalaHeaders/import_kfd.hpp"
 
-#include "core/kg_registry.hpp"
+#include "core/ku_registry.hpp"
 
-namespace KalaGL::Core
+namespace KalaUI::Core
 {
 	using std::string;
 	using std::vector;
@@ -26,7 +26,7 @@ namespace KalaGL::Core
 	class LIB_API Font
 	{
 	public:
-		static inline KalaGLRegistry<Font> registry{};
+		static inline KalaUIRegistry<Font> registry{};
 
 		//Loads a font from disk
 		static Font* Initialize(
