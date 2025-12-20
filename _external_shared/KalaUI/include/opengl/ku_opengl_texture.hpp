@@ -23,7 +23,7 @@ namespace KalaUI::OpenGL
 	using KalaHeaders::KalaMath::vec2;
 
 	//Texture shape/dimension
-	enum class OpenGL_TextureFormat : u8
+	enum class TextureFormat : u8
 	{
 		Format_Auto  = 0,
 
@@ -48,7 +48,7 @@ namespace KalaUI::OpenGL
 			const uintptr_t* glContext,
 			const string& name,
 			const string& path,
-			OpenGL_TextureFormat format = OpenGL_TextureFormat::Format_Auto,
+			TextureFormat format = TextureFormat::Format_Auto,
 			bool flipVertically = false,
 			u8 mipMapLevels = 1);
 			
@@ -91,7 +91,7 @@ namespace KalaUI::OpenGL
 				* static_cast<u32>(1);
 		}
 
-		inline OpenGL_TextureFormat GetFormat() const { return format; }
+		inline TextureFormat GetFormat() const { return format; }
 
 		//Do not destroy manually, erase from registry instead
 		~OpenGL_Texture();
@@ -100,14 +100,14 @@ namespace KalaUI::OpenGL
 			const uintptr_t* glContext,
 			const string& name,
 			const vector<string>& texturePaths,
-			OpenGL_TextureFormat format,
+			TextureFormat format,
 			bool flipVertically,
 			u8 mipMapLevels,
 			const function<bool(
 				u32& outTextureID,
 				vector<vector<u8>>& outData,
 				vec2& outSize,
-				OpenGL_TextureFormat& outFormat)>&
+				TextureFormat& outFormat)>&
 			customTextureInitData);
 	
 		string name{};
@@ -123,6 +123,6 @@ namespace KalaUI::OpenGL
 		u8 mipMapLevels = 1;
 		vector<u8> pixels{};
 
-		OpenGL_TextureFormat format{};
+		TextureFormat format{};
 	};
 }

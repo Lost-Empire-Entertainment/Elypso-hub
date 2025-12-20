@@ -11,9 +11,10 @@
 #include "KalaHeaders/core_utils.hpp"
 #include "KalaHeaders/math_utils.hpp"
 
-#include "core/ku_registry.hpp"
+#include "opengl/kw_opengl.hpp"
+#include "core/kw_registry.hpp"
 
-namespace KalaUI::OpenGL
+namespace KalaWindow::OpenGL
 {
 	using std::string;
 	using std::array;
@@ -25,7 +26,8 @@ namespace KalaUI::OpenGL
 	using KalaHeaders::KalaMath::mat3;
 	using KalaHeaders::KalaMath::mat4;
 	
-	using KalaUI::Core::KalaUIRegistry;
+	using KalaWindow::OpenGL::OpenGL_Context;
+	using KalaWindow::Core::KalaWindowRegistry;
 
 	enum class OpenGL_ShaderType
 	{
@@ -55,12 +57,12 @@ namespace KalaUI::OpenGL
 	class LIB_API OpenGL_Shader
 	{
 	public:
-		static inline KalaUIRegistry<OpenGL_Shader> registry{};
+		static inline KalaWindowRegistry<OpenGL_Shader> registry{};
 
 		//Create a new shader with up to three types of shader files.
 		//Geometry shaders are optional but vert and frag shader must always be filled
 		static OpenGL_Shader* Initialize(
-			const uintptr_t* glContext,
+			OpenGL_Context* glContext,
 			const string& shaderName,
 			const array<OpenGL_ShaderData, 3>& shaderData);
 
@@ -91,7 +93,7 @@ namespace KalaUI::OpenGL
 		inline u32 GetProgramID() const { return programID; }
 		
 		//Returns the OpenGL context of this shader
-		inline const uintptr_t* GetGLContext() const { return glContext; }
+		inline OpenGL_Context* GetGLContext() const { return glContext; }
 
 		//Returns shader data assigned to shader type
 		inline const string& GetShaderData(OpenGL_ShaderType targetType) const
@@ -168,7 +170,7 @@ namespace KalaUI::OpenGL
 		u32 ID{};
 		u32 programID{};
 		
-		const uintptr_t* glContext{};
+		OpenGL_Context* glContext{};
 
 		OpenGL_ShaderData vertData{};
 		OpenGL_ShaderData fragData{};
