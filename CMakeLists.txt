@@ -82,8 +82,10 @@ target_include_directories(Elypso_Hub PRIVATE
 
 # Preprocessor Defines
 target_compile_definitions(Elypso_Hub PRIVATE 
-	WIN32_LEAN_AND_MEAN
-	NOMINMAX
+	WIN32_LEAN_AND_MEAN # cleaner windows.h
+	NOMINMAX            # skips min/max windows macros in favor of the std variants
+	UNICODE             # selects wide api variants over ansi for UTF16 windows functions
+	_UNICODE            # uses wide text types in the C runtime layer
 )
 
 # Link libraries
@@ -102,41 +104,7 @@ if(IS_RELEASE)
 endif()
 
 # Set Windows Details tab data
-set(ICON_DIR "${CMAKE_SOURCE_DIR}/files/icon.ico")
-
-if (IS_RELEASE)
-    set(FILEFLAGS "0x00")
-else()
-	set(FILEFLAGS "0x01")
-endif()
-	
-set(FILETYPE 0x1)    # 0x1 - executable, 0x2 - dynamic-link library
-set(FILESUBTYPE 0x0) # 0x0 = normal DLL, only change if you're making drivers/fonts
-
-# Public fields displayed in Windows Explorer
-set(FILE_DESCRIPTION  "Elypso Hub")
-set(FILE_VERSION      "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}.${PROJECT_VERSION_TWEAK}")
-set(PRODUCT_NAME      "Elypso Hub")
-set(PRODUCT_VERSION   "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}.${PROJECT_VERSION_TWEAK}")
-set(COMPANY_NAME      "Lost Empire Entertainment")
-set(LEGAL_COPYRIGHT   "(C) 2025 Lost Empire Entertainment")
-set(LEGAL_TRADEMARKS  "Trademark of Lost Empire Entertainment")
-set(ORIGINAL_FILENAME "${PRODUCT_NAME}")
-
-# Private/optional fields
-set(INTERNAL_NAME "${PRODUCT_NAME}")
-set(COMMENTS      "${PRODUCT_NAME}")
-set(PRIVATE_BUILD "${PRODUCT_NAME}")
-set(SPECIAL_BUILD "${PRODUCT_NAME}")
-
-# Generate version.rc
-configure_file(
-	${CMAKE_SOURCE_DIR}/version.rc.in
-	${CMAKE_BINARY_DIR}/version.rc
-	@ONLY
-)
-
-target_sources(Elypso_Hub PRIVATE "${CMAKE_BINARY_DIR}/version.rc")
+# set(ICON_DIR "${CMAKE_SOURCE_DIR}/files/icon.ico")
 
 # Expose version string
 add_compile_definitions(
