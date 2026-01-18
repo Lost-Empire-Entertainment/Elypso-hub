@@ -21,38 +21,54 @@ namespace KalaUI::OpenGL::OpenGLFunctions
 {
 	struct GL_UI
 	{
-		//general stuff
+		//state
 
-		PFNGLENABLEPROC             glEnable;
-		PFNGLDISABLEPROC            glDisable;
-		PFNGLBLENDFUNCPROC          glBlendFunc;
-		PFNGLDEPTHMASKPROC          glDepthMask;
-		PFNGLBUFFERDATAPROC         glBufferData;
-		PFNGLDRAWELEMENTSPROC       glDrawElements;
+		PFNGLENABLEPROC      glEnable;
+		PFNGLDISABLEPROC     glDisable;
+		PFNGLBLENDFUNCPROC   glBlendFunc;
+		PFNGLDEPTHMASKPROC   glDepthMask;
+		PFNGLGETERRORPROC    glGetError;
+		PFNGLGETINTEGERVPROC glGetIntegerv;
+
+		//buffers / VAOs
+
+		PFNGLGENBUFFERSPROC      glGenBuffers;
+		PFNGLDELETEBUFFERSPROC   glDeleteBuffers;
+		PFNGLBINDBUFFERPROC      glBindBuffer;
+		PFNGLBUFFERDATAPROC      glBufferData;
+
 		PFNGLGENVERTEXARRAYSPROC    glGenVertexArrays;
-		PFNGLGENBUFFERSPROC         glGenBuffers;
-		PFNGLBINDBUFFERPROC         glBindBuffer;
 		PFNGLDELETEVERTEXARRAYSPROC glDeleteVertexArrays;
-		PFNGLDELETEBUFFERSPROC      glDeleteBuffers;
-		PFNGLGETERRORPROC           glGetError;
+		PFNGLBINDVERTEXARRAYPROC    glBindVertexArray;
 
-		//shader stuff
+		PFNGLENABLEVERTEXATTRIBARRAYPROC glEnableVertexAttribArray;
+		PFNGLVERTEXATTRIBPOINTERPROC     glVertexAttribPointer;
 
-		PFNGLCREATESHADERPROC       glCreateShader;
-		PFNGLCREATEPROGRAMPROC      glCreateProgram;
-		PFNGLVALIDATEPROGRAMPROC    glValidateProgram;
-		PFNGLATTACHSHADERPROC       glAttachShader;
-		PFNGLLINKPROGRAMPROC        glLinkProgram;
-		PFNGLGETPROGRAMIVPROC       glGetProgramiv;
-		PFNGLGETPROGRAMINFOLOGPROC  glGetProgramInfoLog;
+		//drawing
+
+		PFNGLDRAWELEMENTSPROC glDrawElements;
+
+		//shaders / programs
+
+		PFNGLCREATESHADERPROC      glCreateShader;
+		PFNGLSHADERSOURCEPROC      glShaderSource;
+		PFNGLCOMPILESHADERPROC     glCompileShader;
+		PFNGLGETSHADERIVPROC       glGetShaderiv;
 		PFNGLGETSHADERINFOLOGPROC  glGetShaderInfoLog;
-		PFNGLISPROGRAMPROC          glIsProgram;
-		PFNGLUSEPROGRAMPROC         glUseProgram;
-		PFNGLSHADERSOURCEPROC       glShaderSource;
-		PFNGLCOMPILESHADERPROC      glCompileShader;
+		PFNGLDELETESHADERPROC      glDeleteShader;
+
+		PFNGLCREATEPROGRAMPROC     glCreateProgram;
+		PFNGLATTACHSHADERPROC      glAttachShader;
+		PFNGLDETACHSHADERPROC      glDetachShader;
+		PFNGLLINKPROGRAMPROC       glLinkProgram;
+		PFNGLVALIDATEPROGRAMPROC   glValidateProgram;
+		PFNGLUSEPROGRAMPROC        glUseProgram;
+		PFNGLISPROGRAMPROC         glIsProgram;
+		PFNGLGETPROGRAMIVPROC      glGetProgramiv;
+		PFNGLGETPROGRAMINFOLOGPROC glGetProgramInfoLog;
+		PFNGLDELETEPROGRAMPROC     glDeleteProgram;
+
 		PFNGLGETUNIFORMLOCATIONPROC glGetUniformLocation;
-		PFNGLGETINTEGERVPROC        glGetIntegerv;
-		PFNGLGETSHADERIVPROC        glGetShaderiv;
 		PFNGLUNIFORM1IPROC          glUniform1i;
 		PFNGLUNIFORM1FPROC          glUniform1f;
 		PFNGLUNIFORM1FVPROC         glUniform1fv;
@@ -62,25 +78,19 @@ namespace KalaUI::OpenGL::OpenGLFunctions
 		PFNGLUNIFORMMATRIX2FVPROC   glUniformMatrix2fv;
 		PFNGLUNIFORMMATRIX3FVPROC   glUniformMatrix3fv;
 		PFNGLUNIFORMMATRIX4FVPROC   glUniformMatrix4fv;
-		PFNGLDETACHSHADERPROC       glDetachShader;
-		PFNGLDELETESHADERPROC       glDeleteShader;
-		PFNGLDELETEPROGRAMPROC      glDeleteProgram;
 
-		//texture stuff
+		//textures
 
-		PFNGLACTIVETEXTUREPROC           glActiveTexture;
-		PFNGLENABLEVERTEXATTRIBARRAYPROC glEnableVertexAttribArray;
-		PFNGLVERTEXATTRIBPOINTERPROC     glVertexAttribPointer;
-		PFNGLBINDTEXTUREPROC             glBindTexture;
-		PFNGLBINDVERTEXARRAYPROC         glBindVertexArray;
-		PFNGLGENTEXTURESPROC             glGenTextures;
-		PFNGLTEXPARAMETERIPROC           glTexParameteri;
-		PFNGLPIXELSTOREIPROC             glPixelStorei;
-		PFNGLTEXIMAGE2DPROC              glTexImage2D;
-		PFNGLTEXSUBIMAGE2DPROC           glTexSubImage2D;
-		PFNGLTEXSTORAGE2DPROC            glTexStorage2D;
-		PFNGLGENERATEMIPMAPPROC          glGenerateMipmap;
-		PFNGLDELETETEXTURESPROC          glDeleteTextures;
+		PFNGLACTIVETEXTUREPROC  glActiveTexture;
+		PFNGLGENTEXTURESPROC    glGenTextures;
+		PFNGLDELETETEXTURESPROC glDeleteTextures;
+		PFNGLBINDTEXTUREPROC    glBindTexture;
+		PFNGLTEXPARAMETERIPROC  glTexParameteri;
+		PFNGLPIXELSTOREIPROC    glPixelStorei;
+		PFNGLTEXIMAGE2DPROC     glTexImage2D;
+		PFNGLTEXSUBIMAGE2DPROC  glTexSubImage2D;
+		PFNGLTEXSTORAGE2DPROC   glTexStorage2D;
+		PFNGLGENERATEMIPMAPPROC glGenerateMipmap;
 	};
 
 	class LIB_API OpenGL_Functions_UI
