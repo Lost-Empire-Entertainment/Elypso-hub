@@ -7,7 +7,7 @@
 
 #pragma once
 
-#include <Windows.h>
+#include <windows.h>
 #include <functional>
 
 #include "KalaHeaders/core_utils.hpp"
@@ -15,6 +15,8 @@
 namespace KalaWindow::Core
 {
 	using std::function;
+
+	using u32 = uint32_t;
 
 	class LIB_API MessageLoop
 	{
