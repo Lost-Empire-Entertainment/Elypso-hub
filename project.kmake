@@ -12,7 +12,7 @@ standard: c++20
 binarytype: executable
 sources: "src"
 headers: "include", #kw, #kh
-warninglevel: none
+warninglevel: normal
 
 #profile debug-windows
 compiler: clang-cl
