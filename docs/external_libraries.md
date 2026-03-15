@@ -8,6 +8,7 @@ These libraries are used for various purposes, their licenses are included in th
 |-----------------------------------------------------------------|------------------------------------------------------------------------------|
 | [KalaWindow](https://github.com/KalaKit/KalaWindow)             | Windowing, input, graphics and crash handler.                                |
 | [KalaHeaders](https://github.com/KalaKit/KalaHeaders)           | Lightweight, independent header-only scripts for various uses. |
+| [KalaLua](https://github.com/KalaKit/KalaLua)                   | KalaKit C++20 wrapper over Lua.      |
 
 ## Not owned by Lost Empire Entertainment
 
