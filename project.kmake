@@ -7,8 +7,8 @@ name_bin: Elypso Hub
 dir_release: build/release-
 dir_debug: build/debug-
 name_kw: kalawindow
-dir_kw_rel: _external_shared/KalaWindow/release
-dir_kw_deb: _external_shared/KalaWindow/
+dir_kw_rel: ../external-shared/KalaWindow/release
+dir_kw_deb: ../external-shared/KalaWindow/
 comm_objcopy: objcopy --remove-section .note.gnu.property
 
 #global
@@ -17,7 +17,7 @@ binaryname: ${name_bin}
 standard: c++20
 binarytype: executable
 sources: "src"
-headers: "include", "_external_shared/KalaHeaders", "_external_shared/KalaWindow/include", "../_external_shared/KalaLua/include", "../_external_shared/lua/include"
+headers: "include", "../external-shared/KalaHeaders", "../external-shared/KalaWindow/include", "../external-shared/KalaLua/include", "../external-shared/lua/include"
 defines: LIB_STATIC
 warninglevel: normal
 customflags: export-compile-commands, export-vscode-sln
