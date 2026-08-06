@@ -3,13 +3,84 @@
 #version 1.0
 
 #references
-name_bin: Elypso Hub
-dir_release: build/release-
+name_bin: elypsohub
 dir_debug: build/debug-
+dir_release: build/release-
+
+links_win_deb: "${dir_ee_deb}/${name_ee}d.lib", "${dir_kw_deb}/${name_kw}d.lib", "${dir_kg_deb}/${name_kg}d.lib", "${dir_kp_deb}/${name_kp}d.lib", "${dir_ka_deb}/${name_ka}d.lib", "${dir_kl_deb}/${name_kl}d.lib", "${dir_l_deb}/${name_l}d.lib", "${dir_ma_deb}/${name_ma}d.lib", "${dir_sp_deb}/${name_sp}d.lib"
+links_win_rel: "${dir_ee_rel}/${name_ee}.lib", "${dir_kw_rel}/${name_kw}.lib", "${dir_kg_rel}/${name_kg}.lib", "${dir_kp_rel}/${name_kp}.lib", "${dir_ka_rel}/${name_ka}.lib", "${dir_kl_rel}/${name_kl}.lib", "${dir_l_rel}/${name_l}.lib", "${dir_ma_rel}/${name_ma}.lib", "${dir_sp_rel}/${name_sp}.lib"
+links_win_gnu_deb: "${dir_ee_deb}/${name_ee}-gnud.lib", "${dir_kw_deb}/${name_kw}-gnud.lib", "${dir_kg_deb}/${name_kg}-gnud.lib", "${dir_kp_deb}/${name_kp}-gnud.lib", "${dir_ka_deb}/${name_ka}-gnud.lib", "${dir_kl_deb}/${name_kl}-gnud.lib", "${dir_l_deb}/${name_l}-gnud.lib", "${dir_ma_deb}/${name_ma}-gnud.lib", "${dir_sp_deb}/${name_sp}-gnud.lib"
+links_win_gnu_rel: "${dir_ee_rel}/${name_ee}-gnu.lib", "${dir_kw_rel}/${name_kw}-gnu.lib", "${dir_kg_rel}/${name_kg}-gnu.lib", "${dir_kp_rel}/${name_kp}-gnu.lib", "${dir_ka_rel}/${name_ka}-gnu.lib", "${dir_kl_rel}/${name_kl}-gnu.lib", "${dir_l_rel}/${name_l}-gnu.lib", "${dir_ma_rel}/${name_ma}-gnu.lib", "${dir_sp_rel}/${name_sp}-gnu.lib"
+links_lin_deb: "${dir_ee_deb}/lib${name_ee}d.a", "${dir_kw_deb}/lib${name_kw}d.a", "${dir_kg_deb}/lib${name_kg}d.a", "${dir_kp_deb}/lib${name_kp}d.a", "${dir_ka_deb}/lib${name_ka}d.a", "${dir_kl_deb}/lib${name_kl}d.a", "${dir_l_deb}/lib${name_l}d.a", "${dir_ma_deb}/lib${name_ma}d.a", "${dir_sp_deb}/lib${name_sp}d.a"
+links_lin_rel: "${dir_ee_rel}/lib${name_ee}.a", "${dir_kw_rel}/lib${name_kw}.a", "${dir_kg_rel}/lib${name_kg}.a", "${dir_kp_rel}/lib${name_kp}.a", "${dir_ka_rel}/lib${name_ka}.a", "${dir_kl_rel}/lib${name_kl}.a", "${dir_l_rel}/lib${name_l}.a", "${dir_ma_rel}/lib${name_ma}.a", "${dir_sp_rel}/lib${name_sp}.a"
+
+links_win_only: msvcrt, msvcprt, vcruntime
+links_win_and_win_on_linux: ucrt, ole32, uuid, winmm, dbghelp, dwmapi, wtsapi32, runtimeobject, "../../external-shared/Vulkan/vulkan-1.lib"
+links_win_on_linux_only: winpthread
+links_lin: X11, Xi, notify, gobject-2.0, glib-2.0, canberra, vulkan
+
+lib_libgcc: /usr/x86_64-w64-mingw32/bin/libgcc_s_seh-1.dll
+lib_libstdcpp: /usr/x86_64-w64-mingw32/bin/libstdc++-6.dll
+lib_libwinp: /usr/x86_64-w64-mingw32/bin/libwinpthread-1.dll
+
+vkdir_win: ..\\external-shared\\Vulkan
+
+comm_objcopy: objcopy --remove-section .note.gnu.property
+
+//
+// ELYPSO ENGINE
+//
+name_ee: elypsoengine
+dir_ee_rel: ../external-shared/ElypsoEngine/release
+dir_ee_deb: ../external-shared/ElypsoEngine/debug
+//
+// KALAWINDOW
+//
 name_kw: kalawindow
 dir_kw_rel: ../external-shared/KalaWindow/release
-dir_kw_deb: ../external-shared/KalaWindow/
-comm_objcopy: objcopy --remove-section .note.gnu.property
+dir_kw_deb: ../external-shared/KalaWindow/debug
+//
+// KALAGRAPHICS
+//
+name_kg: kalagraphics
+dir_kg_rel: ../external-shared/KalaGraphics/release
+dir_kg_deb: ../external-shared/KalaGraphics/debug
+//
+// KALAPHYSICS
+//
+name_kp: kalaphysics
+dir_kp_rel: ../external-shared/KalaPhysics/release
+dir_kp_deb: ../external-shared/KalaPhysics/debug
+//
+// KALAAUDIO
+//
+name_ka: kalaaudio
+dir_ka_rel: ../external-shared/KalaAudio/release
+dir_ka_deb: ../external-shared/KalaAudio/debug
+//
+// KALALUA
+//
+name_kl: kalalua
+dir_kl_rel: ../external-shared/KalaLua/release
+dir_kl_deb: ../external-shared/KalaLua/debug
+//
+// LUA
+//
+name_l: lua
+dir_l_rel: ../external-shared/lua/release
+dir_l_deb: ../external-shared/lua/debug
+//
+// MINIAUDIO
+//
+name_ma: miniaudio
+dir_ma_rel: ../external-shared/miniaudio/release
+dir_ma_deb: ../external-shared/miniaudio/debug
+//
+// SPIRV-REFLECT
+//
+name_sp: spirv-reflect
+dir_sp_rel: ../external-shared/Spirv-reflect/release
+dir_sp_deb: ../external-shared/Spirv-reflect/debug
 
 #global
 compilerlauncher: ccache
@@ -32,6 +103,33 @@ links: "${dir_kw_deb}/${name_kw}d.lib"
 buildtype: release
 buildpath: "${dir_release}windows"
 links: "${dir_kw_rel}/${name_kw}.lib"
+
+#profile debug-win-on-linux
+targettype: windows-gnu
+buildtype: debug
+buildpath: "${dir_debug}win-on-linux"
+links: ${links_win_gnu_deb}, ${links_win_on_linux_only}, ${links_win_and_win_on_linux}
+//postbuildaction: rm -rf "files/shaders"
+//postbuildaction: cp -r "../external-shared/KalaGraphics/files/shaders/." "files/shaders"
+postbuildaction: rm -rf "${dir_debug}win-on-linux/files"
+postbuildaction: cp -r "files" "${dir_debug}win-on-linux/files"
+postbuildaction: cp "${lib_libgcc}" "${dir_debug}win-on-linux"
+postbuildaction: cp "${lib_libstdcpp}" "${dir_debug}win-on-linux"
+postbuildaction: cp "${lib_libwinp}" "${dir_debug}win-on-linux"
+
+#profile release-win-on-linux
+targettype: windows-gnu
+buildtype: release
+buildpath: "${dir_release}win-on-linux"
+customflags: no-console
+links: ${links_win_gnu_rel}, ${links_win_on_linux_only}, ${links_win_and_win_on_linux}
+//postbuildaction: rm -rf "files/shaders"
+//postbuildaction: cp -r "../external-shared/KalaGraphics/files/shaders/." "files/shaders"
+postbuildaction: rm -rf "${dir_release}win-on-linux/files"
+postbuildaction: cp -r "files" "${dir_release}win-on-linux/files"
+postbuildaction: cp "${lib_libgcc}" "${dir_release}win-on-linux"
+postbuildaction: cp "${lib_libstdcpp}" "${dir_release}win-on-linux"
+postbuildaction: cp "${lib_libwinp}" "${dir_release}win-on-linux"
 
 #profile debug-linux
 buildtype: debug
