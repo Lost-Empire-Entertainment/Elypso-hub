@@ -121,6 +121,7 @@ postbuildaction: IF EXIST "files\\shaders" rmdir /s /q "files\\shaders"
 postbuildaction: xcopy "..\\..\\external-shared\\KalaGraphics\\files\\shaders\\." "files\\shaders" /e /i /h /y
 postbuildaction: IF EXIST "${dir_release}windows\\files" rmdir /s /q "${dir_release}windows\\files"
 postbuildaction: xcopy "files" "${dir_release}windows\\files" /e /i /h /y
+postbuildaction: editbin /strip:debug ${dir_release}windows/${name_bin}.exe
 
 #profile debug-windows-gnu
 targettype: windows-gnu
@@ -148,6 +149,7 @@ postbuildaction: cp -r "files" "${dir_release}windows-gnu/files"
 postbuildaction: cp "${lib_libgcc}" "${dir_release}windows-gnu"
 postbuildaction: cp "${lib_libstdcpp}" "${dir_release}windows-gnu"
 postbuildaction: cp "${lib_libwinp}" "${dir_release}windows-gnu"
+postbuildaction: strip --strip-unneeded ${dir_release}windows-gnu/${name_bin}.exe
 
 #profile debug-linux
 buildtype: debug
@@ -162,3 +164,4 @@ buildpath: "${dir_release}linux"
 links: "${dir_kw_rel}/lib${name_kw}.a"
 //strips stupid avx requirements that cachyos seems to add for no reason
 postbuildaction: ${comm_objcopy} ${dir_release}linux/${name_bin}
+postbuildaction: strip --strip-unneeded ${dir_release}linux/${name_bin}
