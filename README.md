@@ -1,6 +1,6 @@
 # Elypso hub
 
-*Elypso Hub* is a project manager for [Elypso Engine](https://github.com/lost-empire-entertainment/elypso-engine), you do not need *Elypso Hub* to use the engine but it greatly improves usability across engine versions and for multiple projects.
+*Elypso Hub* is a Vulkan 1.4 C++20 project manager for Windows 10/11 and Linux (glibc 2.38 or newer). It is meant to be used with[Elypso Engine](https://github.com/lost-empire-entertainment/elypso-engine) but you do not need it to use the engine, it greatly improves usability across engine versions and for multiple projects.
 
 We are preparing for a super special 3-year anniversary pre-release build some time in the second half of november so keep your eyes peeled!
 
